@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.0.18"
+    "@heroicons/react": "^2.0.18",
+    "lucide-react": "^0.294.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
