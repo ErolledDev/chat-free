@@ -38,6 +38,21 @@
       50% { opacity: 1; }
       100% { opacity: 0.3; }
     }
+
+    @keyframes ping {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
+    }
     
     .chat-widget-container {
       animation: slideIn 0.3s ease forwards;
@@ -58,6 +73,19 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: transform 0.2s ease;
       will-change: transform;
+      position: relative;
+    }
+
+    .chat-bubble::before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: #ef4444;
+      border-radius: 50%;
+      top: 0;
+      right: 0;
+      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
     
     .chat-bubble:hover {
@@ -68,12 +96,13 @@
       width: 360px;
       height: 520px;
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       will-change: transform;
+      border: 1px solid rgba(0, 0, 0, 0.1);
     }
     
     .chat-header {
@@ -82,7 +111,9 @@
       align-items: center;
       gap: 12px;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
     }
 
     .chat-messages {
@@ -91,15 +122,16 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
       scroll-behavior: smooth;
+      background: #f9fafb;
     }
 
     .message-container {
       display: flex;
       flex-direction: column;
       gap: 4px;
-      max-width: 80%;
+      max-width: 85%;
       animation: fadeIn 0.3s ease;
       transform: translateZ(0);
     }
@@ -117,22 +149,26 @@
       border-radius: 16px;
       position: relative;
       word-wrap: break-word;
+      line-height: 1.5;
     }
 
     .message.user {
       background: var(--theme-color);
       color: white;
       border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .message.bot {
-      background: #f3f4f6;
+      background: white;
       color: #1f2937;
       border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .message-time {
-      font-size: 12px;
+      font-size: 11px;
       color: #9ca3af;
       margin: 0 4px;
     }
@@ -149,11 +185,13 @@
       display: flex;
       gap: 4px;
       padding: 12px 16px;
-      background: #f3f4f6;
+      background: white;
       border-radius: 16px;
       border-bottom-left-radius: 4px;
       width: fit-content;
       margin-top: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .typing-dot {
@@ -171,29 +209,27 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       gap: 8px;
       background: white;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .quick-question-btn {
-      padding: 8px 16px;
+      padding: 10px 16px;
       background: #f3f4f6;
       border: 1px solid #e5e7eb;
-      border-radius: 20px;
+      border-radius: 12px;
       cursor: pointer;
       font-size: 14px;
       text-align: left;
       transition: all 0.2s ease;
       color: #374151;
-      display: inline-block;
-      max-width: 100%;
-      width: auto;
-      white-space: normal;
-      word-wrap: break-word;
+      display: block;
+      width: 100%;
       position: relative;
       overflow: hidden;
+      line-height: 1.5;
     }
 
     .quick-question-btn:not(:disabled):hover {
@@ -218,20 +254,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
     }
     
     .close-button:hover {
       background: rgba(255, 255, 255, 0.3);
+      transform: rotate(90deg);
     }
 
     .closing-message {
-      padding: 16px;
-      background: #f3f4f6;
-      border-radius: 12px;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
       margin: 16px;
       text-align: center;
       animation: fadeIn 0.5s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .closing-action-button {
@@ -239,18 +278,40 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-top: 12px;
-      padding: 8px 16px;
+      margin-top: 16px;
+      padding: 10px 20px;
       background: var(--theme-color);
       color: white;
-      border-radius: 20px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: 500;
-      transition: opacity 0.2s ease;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .closing-action-button:hover {
-      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .online-indicator {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      margin-left: 4px;
+      position: relative;
+    }
+
+    .online-indicator::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: inherit;
+      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+      opacity: 0.3;
     }
   `;
   document.head.appendChild(styleSheet);
@@ -423,7 +484,7 @@
     return `
       <div class="chat-widget-container">
         <div class="chat-window">
-          <div class="chat-header" style="background: ${color}; color: white; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+          <div class="chat-header" style="background: ${color}; color: white;">
             <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
               ${config.image ? 
                 `<img src="${config.image}" alt="${config.businessName || 'Chat'}" style="width: 100%; height: 100%; object-fit: cover;">` :
@@ -436,7 +497,10 @@
             </div>
             <div style="flex-grow: 1;">
               <div style="font-weight: 600; font-size: 16px;">${config.businessName || 'Chat'}</div>
-              <div style="font-size: 14px; opacity: 0.9;">Online</div>
+              <div style="font-size: 14px; opacity: 0.9; display: flex; align-items: center; gap: 4px;">
+                Online
+                <div class="online-indicator"></div>
+              </div>
             </div>
             <button class="close-button" onclick="event.stopPropagation(); document.getElementById('business-chat-widget').dispatchEvent(new CustomEvent('toggleChat'));">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
