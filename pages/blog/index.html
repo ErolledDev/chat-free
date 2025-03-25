@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - ChatWidget</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        .blog-content {
+            font-family: 'Playfair Display', serif;
+        }
+        .gradient-overlay {
+            background: linear-gradient(to right, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0));
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="text-2xl font-['Pacifico'] text-primary">ChatWidget</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-primary">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">About</a>
+                    <a href="#" class="text-primary">Blog</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Contact</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:border-primary">
+                        <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <button class="md:hidden" id="menuBtn">
+                        <i class="ri-menu-line text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pt-24 pb-16">
+        <section class="relative h-[600px] mb-16 overflow-hidden rounded-lg">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=2070')"></div>
+            <div class="absolute inset-0 gradient-overlay"></div>
+            <div class="relative h-full flex items-center">
+                <div class="max-w-2xl">
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm mb-4">Featured Post</span>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 blog-content">Why Chat Widget is Essential for Modern Businesses</h1>
+                    <p class="text-gray-600 text-lg mb-8">Discover how implementing a chat widget can transform your customer service and boost engagement rates significantly.</p>
+                    <div class="flex items-center space-x-4 mb-8">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=2070" alt="Author" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-medium">John Smith</h4>
+                            <p class="text-sm text-gray-500">March 25, 2025 · 8 min read</p>
+                        </div>
+                    </div>
+                    <a href="/pages/blog/articles/why-chat-widget-is-essential.html" class="bg-primary text-white px-6 py-3 rounded-button hover:bg-primary/90 transition-colors inline-block">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="flex flex-col lg:flex-row gap-12">
+            <div class="lg:w-2/3">
+                <h2 class="text-3xl font-bold mb-8 blog-content">Recent Posts</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1565847996490-4ba33e46c2ce?auto=format&fit=crop&q=80&w=2070" alt="Blog post" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-primary">Customer Service</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">10 Ways to Improve Customer Support</h3>
+                            <p class="text-gray-600 mb-4">Essential strategies for enhancing your customer support experience and building lasting relationships.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">March 24, 2025</span>
+                                <span class="text-sm text-gray-500">5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015" alt="Blog post" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-primary">Technology</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">The Future of Chat Support</h3>
+                            <p class="text-gray-600 mb-4">Exploring upcoming trends and innovations in customer chat support technology.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">March 23, 2025</span>
+                                <span class="text-sm text-gray-500">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1968" alt="Blog post" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-primary">Business</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">Scaling Customer Support</h3>
+                            <p class="text-gray-600 mb-4">Learn how to effectively scale your customer support as your business grows.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">March 22, 2025</span>
+                                <span class="text-sm text-gray-500">7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&q=80&w=2070" alt="Blog post" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-primary">Guides</span>
+                            <h3 class="text-xl font-bold mt-2 mb-3">Chat Widget Implementation Guide</h3>
+                            <p class="text-gray-600 mb-4">Step-by-step guide to implementing a chat widget on your website.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">March 21, 2025</span>
+                                <span class="text-sm text-gray-500">4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <button class="mt-8 w-full py-3 border border-primary text-primary rounded-button hover:bg-primary/5 transition-colors">Load More</button>
+            </div>
+
+            <aside class="lg:w-1/3">
+                <div class="sticky top-24">
+                    <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                        <h3 class="text-xl font-bold mb-6">Categories</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">Customer Service (12)</button>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">Technology (8)</button>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">Business (15)</button>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">Guides (20)</button>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">Tips (6)</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                        <h3 class="text-xl font-bold mb-6">Newsletter</h3>
+                        <p class="text-gray-600 mb-4">Stay updated with our latest stories and articles</p>
+                        <form class="space-y-4">
+                            <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 border border-gray-200 rounded text-sm focus:outline-none focus:border-primary">
+                            <button type="submit" class="w-full bg-primary text-white py-2 rounded-button hover:bg-primary/90 transition-colors">Subscribe</button>
+                        </form>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-bold mb-6">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">
+                                <i class="ri-linkedin-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <a href="/" class="text-2xl font-['Pacifico'] text-white mb-4 block">ChatWidget</a>
+                    <p class="text-gray-400">Empowering businesses with better customer communication through innovative chat solutions.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Customer Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Business</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Guides</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <i class="ri-mail-line"></i>
+                            <span>contact@chatwidget.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <i class="ri-phone-line"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center space-x-2 text-gray-400">
+                            <i class="ri-map-pin-line"></i>
+                            <span>123 Widget Street, NY 10001</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 ChatWidget. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 transition-opacity duration-300">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const nav = document.querySelector('nav');
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('hidden');
+        });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.style.opacity = '1';
+            } else {
+                backToTop.style.opacity = '0';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
