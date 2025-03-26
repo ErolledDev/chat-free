@@ -313,6 +313,13 @@
       animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
       opacity: 0.3;
     }
+
+    .closing-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
   `;
   document.head.appendChild(styleSheet);
 
@@ -345,12 +352,30 @@
 
     const closingMessage = document.createElement('div');
     closingMessage.className = 'closing-message';
+    
+    let buttonsHtml = '';
+    if (config.messageClosingActionUrl && config.messageClosingActionButton) {
+      buttonsHtml += `
+        <a href="${config.messageClosingActionUrl}" target="_blank" class="closing-action-button">
+          ${config.messageClosingActionButton}
+        </a>
+      `;
+    }
+    if (config.messageClosingActionUrl2 && config.messageClosingActionButton2) {
+      buttonsHtml += `
+        <a href="${config.messageClosingActionUrl2}" target="_blank" class="closing-action-button">
+          ${config.messageClosingActionButton2}
+        </a>
+      `;
+    }
+
     closingMessage.innerHTML = `
-      <p>${config.messageClosing || 'To continue chatting please reach us via the link below:'}</p>
-      <a href="${config.messageClosingActionUrl || '#'}" target="_blank" class="closing-action-button">
-        ${config.messageClosingActionButton || 'Contact Us'}
-      </a>
+      <p>${config.messageClosing || 'To continue chatting please reach us via the links below:'}</p>
+      <div class="closing-actions">
+        ${buttonsHtml}
+      </div>
     `;
+    
     messagesContainer.appendChild(closingMessage);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
     hasShownClosingMessage = true;
@@ -481,6 +506,34 @@
       </div>
     ` : '';
 
+    let closingMessageHtml = '';
+    if (hasShownClosingMessage) {
+      let buttonsHtml = '';
+      if (config.messageClosingActionUrl && config.messageClosingActionButton) {
+        buttonsHtml += `
+          <a href="${config.messageClosingActionUrl}" target="_blank" class="closing-action-button">
+            ${config.messageClosingActionButton}
+          </a>
+        `;
+      }
+      if (config.messageClosingActionUrl2 && config.messageClosingActionButton2) {
+        buttonsHtml += `
+          <a href="${config.messageClosingActionUrl2}" target="_blank" class="closing-action-button">
+            ${config.messageClosingActionButton2}
+          </a>
+        `;
+      }
+
+      closingMessageHtml = `
+        <div class="closing-message">
+          <p>${config.messageClosing || 'To continue chatting please reach us via the links below:'}</p>
+          <div class="closing-actions">
+            ${buttonsHtml}
+          </div>
+        </div>
+      `;
+    }
+
     return `
       <div class="chat-widget-container">
         <div class="chat-window">
@@ -511,14 +564,7 @@
           </div>
           <div class="chat-messages">
             ${messagesHtml}
-            ${hasShownClosingMessage ? `
-              <div class="closing-message">
-                <p>${config.messageClosing || 'To continue chatting please reach us via the link below:'}</p>
-                <a href="${config.messageClosingActionUrl || '#'}" target="_blank" class="closing-action-button">
-                  ${config.messageClosingActionButton || 'Contact Us'}
-                </a>
-              </div>
-            ` : ''}
+            ${closingMessageHtml}
           </div>
           ${remainingQuestions.length > 0 ? quickQuestionsHtml : ''}
         </div>

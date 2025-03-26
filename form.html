@@ -121,19 +121,37 @@
                                 placeholder="Enter the message to show when all questions are answered"></textarea>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="messageClosingActionButton" class="block text-sm font-medium text-gray-700 mb-2">Button Text</label>
-                                <input type="text" id="messageClosingActionButton" name="messageClosingActionButton"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                    placeholder="e.g., 'Contact on Facebook'">
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="messageClosingActionButton" class="block text-sm font-medium text-gray-700 mb-2">Button Text 1</label>
+                                    <input type="text" id="messageClosingActionButton" name="messageClosingActionButton"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                                        placeholder="e.g., 'Contact on Facebook'">
+                                </div>
+
+                                <div>
+                                    <label for="messageClosingActionUrl" class="block text-sm font-medium text-gray-700 mb-2">Action URL 1</label>
+                                    <input type="text" id="messageClosingActionUrl" name="messageClosingActionUrl"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                                        placeholder="e.g., https://m.me/username">
+                                </div>
                             </div>
 
-                            <div>
-                                <label for="messageClosingActionUrl" class="block text-sm font-medium text-gray-700 mb-2">Action URL</label>
-                                <input type="text" id="messageClosingActionUrl" name="messageClosingActionUrl"
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                    placeholder="e.g., https://m.me/username">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="messageClosingActionButton2" class="block text-sm font-medium text-gray-700 mb-2">Button Text 2</label>
+                                    <input type="text" id="messageClosingActionButton2" name="messageClosingActionButton2"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                                        placeholder="e.g., 'Email Us'">
+                                </div>
+
+                                <div>
+                                    <label for="messageClosingActionUrl2" class="block text-sm font-medium text-gray-700 mb-2">Action URL 2</label>
+                                    <input type="text" id="messageClosingActionUrl2" name="messageClosingActionUrl2"
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                                        placeholder="e.g., mailto:support@example.com">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -224,6 +242,8 @@
                 messageClosing: document.getElementById('messageClosing').value,
                 messageClosingActionButton: document.getElementById('messageClosingActionButton').value,
                 messageClosingActionUrl: document.getElementById('messageClosingActionUrl').value,
+                messageClosingActionButton2: document.getElementById('messageClosingActionButton2').value,
+                messageClosingActionUrl2: document.getElementById('messageClosingActionUrl2').value,
                 quickQuestions: []
             };
 
