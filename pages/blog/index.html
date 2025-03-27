@@ -42,14 +42,11 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                    <a href="/" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
-                        <i class="ri-arrow-left-line"></i>
-                        <span>Back to Home</span>
-                    </a>
+                
                     <a href="/" class="font-['Pacifico'] text-2xl text-primary">ChatWidget</a>
                 </div>
                
-                <nav class="hidden md:flex space-x-8">
+                <nav class="hidden md:flex space-x-8" style="display: flex; align-items: center;">
                     <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
                     <a href="#" class="text-primary font-medium">Blog</a>
                     <a href="/pages/form.html" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">Try Now</a>
@@ -215,38 +212,39 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="pattern-overlay opacity-10"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-2">
-                    <a href="/" class="text-2xl font-['Pacifico'] text-white mb-4 block">ChatWidget</a>
-                    <p class="text-gray-400">Empowering businesses with better customer communication through innovative chat solutions.</p>
+                    <a href="/" class="text-2xl font-bold text-white hover:text-gray-200 transition-colors">ChatWidget</a>
+                    <p class="mt-4 text-gray-400 max-w-md">Transform your customer support with our free, easy-to-install chat widget. Connect with your customers in real-time.</p>
                 </div>
-                <div>
+                <nav aria-label="Footer navigation">
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="/pages/form.html" class="text-gray-400 hover:text-white transition-colors">Try ChatWidget</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#why-us" class="text-gray-400 hover:text-white transition-colors">Why Choose Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="/pages/guide.html" class="text-gray-400 hover:text-white transition-colors">User Guide</a></li>
+                        <li><a href="/pages/terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="/pages/privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="/pages/blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
                     </ul>
-                </div>
+                </nav>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
-                    <div class="flex gap-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="ri-twitter-fill text-xl"></i>
+                    <h3 class="text-lg font-semibold mb-4">Get Started</h3>
+                   <a href="/pages/form.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                            Get Started Free
+                            <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="ri-facebook-fill text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="ri-linkedin-fill text-xl"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2025 ChatWidget. All rights reserved.</p>
+                <p>&copy; 2023 ChatWidget. All rights reserved.</p>
             </div>
         </div>
     </footer>

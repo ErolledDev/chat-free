@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Widget Configurator</title>
+    <title>Business Widget Configurator - ChatWidget</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -24,126 +25,195 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
         }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        .form-section {
+            transition: all 0.3s ease;
+        }
+        .form-section.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .form-section.inactive {
+            transform: translateX(20px);
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
-
- 
-        <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                    <a href="/pages/blog/index.html" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
+                    <a href="/" class="flex items-center gap-2 text-gray-600 hover:text-indigo-600 transition-colors">
                         <i class="ri-arrow-left-line"></i>
-                        <span>Back to Blog</span>
+                        <span>Back to Home</span>
                     </a>
-                    <a href="/" class="font-['Pacifico'] text-2xl text-primary">ChatWidget</a>
+                    <a href="/" class="text-2xl font-bold text-indigo-600">ChatWidget</a>
                 </div>
-               
-                <nav class="hidden md:flex space-x-8" style="display: flex; align-items: center; justify-content: space-between;">
-                    <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="#" class="text-primary font-medium">Blog</a>
-                    <a href="/pages/form.html" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 transition-colors">Try Now</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="/pages/blog/index.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Blog</a>
+                    <a href="#" class="text-indigo-600 font-medium">Configure</a>
                 </nav>
             </div>
         </div>
     </header>
- <main class="gradient-bg text-white py-12">
-    <div class="gradient-bg text-white py-12">
-        <div class="max-w-4xl mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Widget Configuration</h1>
-            <p class="text-lg opacity-90">Customize your business chat widget with ease</p>
-        </div>
+
+    <!-- Progress Bar -->
+    <div class="fixed top-16 left-0 right-0 h-1 bg-gray-100 z-40">
+        <div id="progressBar" class="h-full bg-indigo-600 progress-bar" style="width: 0%"></div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-6 -mt-8">
-        <div class="glass-effect rounded-xl shadow-2xl p-8 mb-12">
-            <form id="configForm" class="space-y-12">
-                <!-- Business Information -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                        <h2 class="text-2xl font-semibold text-gray-900">Business Information</h2>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="businessName" class="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
-                            <input type="text" id="businessName" name="businessName" 
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                placeholder="Enter your business name">
-                        </div>
+    <main class="pt-24">
+        <!-- Header -->
+        <div class="gradient-bg text-white py-12">
+            <div class="max-w-4xl mx-auto px-6">
+                <h1 class="text-4xl font-bold mb-4">Widget Configuration</h1>
+                <p class="text-lg opacity-90">Create your perfect chat widget in minutes</p>
+                
+                <!-- Steps -->
+                <div class="flex items-center gap-4 mt-8">
+                    <button class="step-btn active px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors" data-step="1">
+                        <span class="flex items-center gap-2">
+                            <i class="ri-store-2-line"></i>
+                            Business Info
+                        </span>
+                    </button>
+                    <div class="h-px w-8 bg-white/20"></div>
+                    <button class="step-btn px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors" data-step="2">
+                        <span class="flex items-center gap-2">
+                            <i class="ri-questionnaire-line"></i>
+                            Questions
+                        </span>
+                    </button>
+                    <div class="h-px w-8 bg-white/20"></div>
+                    <button class="step-btn px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors" data-step="3">
+                        <span class="flex items-center gap-2">
+                            <i class="ri-message-3-line"></i>
+                            Messages
+                        </span>
+                    </button>
+                    <div class="h-px w-8 bg-white/20"></div>
+                    <button class="step-btn px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors" data-step="4">
+                        <span class="flex items-center gap-2">
+                            <i class="ri-code-box-line"></i>
+                            Install
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                        <div>
-                            <label for="colorScheme" class="block text-sm font-medium text-gray-700 mb-2">Brand Color</label>
-                            <input type="color" id="colorScheme" name="colorScheme" value="#4f46e5"
-                                class="w-full h-12 rounded-lg border border-gray-300 cursor-pointer color-picker">
+        <div class="max-w-4xl mx-auto px-6 -mt-8 pb-16">
+            <div class="glass-effect rounded-xl shadow-2xl p-8">
+                <form id="configForm" class="relative">
+                    <!-- Business Information -->
+                    <div class="form-section active" data-step="1">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
+                            <h2 class="text-2xl font-semibold text-gray-900">Business Information</h2>
                         </div>
-                    </div>
-
-                    <div>
-                        <label for="businessIcon" class="block text-sm font-medium text-gray-700 mb-2">Business Icon</label>
-                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-indigo-500 transition-all cursor-pointer">
-                            <div class="space-y-2 text-center">
-                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <div class="text-sm text-gray-600">
-                                    <label for="businessIcon" class="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                        <span>Upload a file</span>
-                                        <input id="businessIcon" name="businessIcon" type="file" accept="image/*" class="sr-only">
-                                    </label>
+                        
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="businessName" class="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
+                                    <input type="text" id="businessName" name="businessName" 
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                                        placeholder="Enter your business name">
                                 </div>
-                                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+
+                                <div>
+                                    <label for="colorScheme" class="block text-sm font-medium text-gray-700 mb-2">Brand Color</label>
+                                    <input type="color" id="colorScheme" name="colorScheme" value="#4f46e5"
+                                        class="w-full h-12 rounded-lg border border-gray-300 cursor-pointer color-picker">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="businessIcon" class="block text-sm font-medium text-gray-700 mb-2">Business Icon</label>
+                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-indigo-500 transition-all cursor-pointer">
+                                    <div class="space-y-2 text-center">
+                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div class="text-sm text-gray-600">
+                                            <label for="businessIcon" class="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                <span>Upload a file</span>
+                                                <input id="businessIcon" name="businessIcon" type="file" accept="image/*" class="sr-only">
+                                            </label>
+                                        </div>
+                                        <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="welcomeMessage" class="block text-sm font-medium text-gray-700 mb-2">Welcome Message</label>
+                                <textarea id="welcomeMessage" name="welcomeMessage" rows="3"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                                    placeholder="Enter a welcome message for your visitors"></textarea>
                             </div>
                         </div>
+
+                        <div class="mt-8 flex justify-end">
+                            <button type="button" class="next-btn px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                                Next Step
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    <div>
-                        <label for="welcomeMessage" class="block text-sm font-medium text-gray-700 mb-2">Welcome Message</label>
-                        <textarea id="welcomeMessage" name="welcomeMessage" rows="3"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="Enter a welcome message for your visitors"></textarea>
-                    </div>
-                </div>
+                    <!-- Quick Questions -->
+                    <div class="form-section inactive" data-step="2">
+                        <div class="flex items-center justify-between gap-3 mb-8">
+                            <div class="flex items-center gap-3">
+                                <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
+                                <h2 class="text-2xl font-semibold text-gray-900">Quick Questions & Answers</h2>
+                            </div>
+                            <button type="button" id="addQuestionBtn"
+                                class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all text-sm font-medium flex items-center gap-2">
+                                <i class="ri-add-line"></i>
+                                Add Question
+                            </button>
+                        </div>
+                        
+                        <div id="quickQuestions" class="space-y-6">
+                            <!-- Questions will be added here dynamically -->
+                        </div>
 
-                <!-- Quick Questions -->
-                <div class="space-y-6">
-                    <div class="flex items-center justify-between gap-3 mb-6">
-                        <div class="flex items-center gap-3">
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" class="prev-btn px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2">
+                                <i class="ri-arrow-left-line"></i>
+                                Previous
+                            </button>
+                            <button type="button" class="next-btn px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                                Next Step
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Closing Message -->
+                    <div class="form-section inactive" data-step="3">
+                        <div class="flex items-center gap-3 mb-8">
                             <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                            <h2 class="text-2xl font-semibold text-gray-900">Quick Questions & Answers</h2>
+                            <h2 class="text-2xl font-semibold text-gray-900">Closing Message</h2>
                         </div>
-                        <button type="button" id="addQuestionBtn"
-                            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all text-sm font-medium flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                            </svg>
-                            Add Question
-                        </button>
-                    </div>
-                    
-                    <div id="quickQuestions" class="space-y-6">
-                        <!-- Questions will be added here dynamically -->
-                    </div>
-                </div>
-
-                <!-- Closing Message Configuration -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                        <h2 class="text-2xl font-semibold text-gray-900">Closing Message</h2>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 space-y-6">
-                        <div>
-                            <label for="messageClosing" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="messageClosing" name="messageClosing" rows="2"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                placeholder="Enter the message to show when all questions are answered"></textarea>
-                        </div>
-
+                        
                         <div class="space-y-6">
+                            <div>
+                                <label for="messageClosing" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea id="messageClosing" name="messageClosing" rows="2"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                                    placeholder="Enter the message to show when all questions are answered"></textarea>
+                            </div>
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="messageClosingActionButton" class="block text-sm font-medium text-gray-700 mb-2">Button Text 1</label>
@@ -176,40 +246,62 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Installation Code -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                        <h2 class="text-2xl font-semibold text-gray-900">Installation Code</h2>
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" class="prev-btn px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2">
+                                <i class="ri-arrow-left-line"></i>
+                                Previous
+                            </button>
+                            <button type="button" class="next-btn px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                                Next Step
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div class="relative">
-                        <pre id="installationCode" class="bg-gray-900 text-gray-100 rounded-xl p-6 overflow-x-auto text-sm font-mono"></pre>
-                        <button type="button" id="copyButton"
-                            class="absolute top-4 right-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all text-sm font-medium">
-                            Copy
-                        </button>
+
+                    <!-- Installation Code -->
+                    <div class="form-section inactive" data-step="4">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
+                            <h2 class="text-2xl font-semibold text-gray-900">Installation Code</h2>
+                        </div>
+                        
+                        <div class="relative">
+                            <pre id="installationCode" class="bg-gray-900 text-gray-100 rounded-xl p-6 overflow-x-auto text-sm font-mono"></pre>
+                            <button type="button" id="copyButton"
+                                class="absolute top-4 right-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all text-sm font-medium flex items-center gap-2">
+                                <i class="ri-file-copy-line"></i>
+                                Copy
+                            </button>
+                        </div>
+
+                        <div class="mt-8 flex justify-between">
+                            <button type="button" class="prev-btn px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2">
+                                <i class="ri-arrow-left-line"></i>
+                                Previous
+                            </button>
+                            <a href="/" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                                <i class="ri-home-line"></i>
+                                Back to Home
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
+
     <script>
         let imageBase64 = '';
         let questionCount = 0;
+        let currentStep = 1;
 
         function createQuestionElement(index) {
             const div = document.createElement('div');
             div.className = 'bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:border-indigo-500 transition-all relative';
             div.innerHTML = `
                 <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 focus:outline-none" onclick="removeQuestion(this.parentElement)">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
+                    <i class="ri-close-line text-xl"></i>
                 </button>
                 <div class="space-y-4">
                     <div>
@@ -243,7 +335,6 @@
             questionCount--;
             updateInstallationCode();
             
-            // Update question numbers
             const questions = document.querySelectorAll('#quickQuestions > div');
             questions.forEach((q, index) => {
                 const labels = q.querySelectorAll('label');
@@ -269,7 +360,6 @@
                 quickQuestions: []
             };
 
-            // Collect quick questions
             const questions = document.querySelectorAll('#quickQuestions > div');
             questions.forEach((q, i) => {
                 const question = q.querySelector(`[name="question${i + 1}"]`).value;
@@ -293,7 +383,37 @@
             document.getElementById('installationCode').textContent = code;
         }
 
-        // Handle image upload
+        function updateProgress() {
+            const progress = ((currentStep - 1) / 3) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            
+            // Update step buttons
+            document.querySelectorAll('.step-btn').forEach((btn, index) => {
+                if (index + 1 === currentStep) {
+                    btn.classList.add('bg-white', 'text-indigo-600');
+                    btn.classList.remove('bg-white/10');
+                } else {
+                    btn.classList.remove('bg-white', 'text-indigo-600');
+                    btn.classList.add('bg-white/10');
+                }
+            });
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.form-section').forEach(section => {
+                if (parseInt(section.dataset.step) === step) {
+                    section.classList.remove('inactive');
+                    section.classList.add('active');
+                } else {
+                    section.classList.add('inactive');
+                    section.classList.remove('active');
+                }
+            });
+            currentStep = step;
+            updateProgress();
+        }
+
+        // Event Listeners
         document.getElementById('businessIcon').addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (file) {
@@ -306,26 +426,47 @@
             }
         });
 
-        // Handle form changes
         document.getElementById('configForm').addEventListener('input', (e) => {
             if (e.target.id !== 'businessIcon') {
                 updateInstallationCode();
             }
         });
 
-        // Handle add question button
         document.getElementById('addQuestionBtn').addEventListener('click', addQuestion);
 
-        // Handle copy button
         document.getElementById('copyButton').addEventListener('click', () => {
             const code = document.getElementById('installationCode').textContent;
             navigator.clipboard.writeText(code);
             
             const button = document.getElementById('copyButton');
-            button.textContent = 'Copied!';
+            button.innerHTML = '<i class="ri-check-line"></i> Copied!';
             setTimeout(() => {
-                button.textContent = 'Copy';
+                button.innerHTML = '<i class="ri-file-copy-line"></i> Copy';
             }, 2000);
+        });
+
+        // Navigation
+        document.querySelectorAll('.step-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const step = parseInt(btn.dataset.step);
+                showStep(step);
+            });
+        });
+
+        document.querySelectorAll('.next-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep < 4) {
+                    showStep(currentStep + 1);
+                }
+            });
+        });
+
+        document.querySelectorAll('.prev-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    showStep(currentStep - 1);
+                }
+            });
         });
 
         // Add initial question
