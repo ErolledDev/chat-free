@@ -49,10 +49,7 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                    <a href="/" class="flex items-center gap-2 text-gray-600 hover:text-indigo-600 transition-colors">
-                        <i class="ri-arrow-left-line"></i>
-                        <span>Back to Home</span>
-                    </a>
+                   
                     <a href="/" class="text-2xl font-bold text-indigo-600">ChatWidget</a>
                 </div>
                 <nav class="hidden md:flex items-center space-x-8">
@@ -137,6 +134,7 @@
 
                             <div>
                                 <label for="businessIcon" class="block text-sm font-medium text-gray-700 mb-2">Business Icon</label>
+                                   
                                 <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-indigo-500 transition-all cursor-pointer">
                                     <div class="space-y-2 text-center">
                                         <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
@@ -264,8 +262,9 @@
                         <div class="flex items-center gap-3 mb-8">
                             <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
                             <h2 class="text-2xl font-semibold text-gray-900">Installation Code</h2>
+                          
                         </div>
-                        
+                          <p class="text-md text-gray-700 px-8 py-4"><span class="bg-indigo-200">TIPS : You can skip upload but replace  "image": "data:image/webp;base64,..." to a direct image link "image": "https://example.com/image/image.jpg or .png or .webp please see the final installation code. </span></p>
                         <div class="relative">
                             <pre id="installationCode" class="bg-gray-900 text-gray-100 rounded-xl p-6 overflow-x-auto text-sm font-mono"></pre>
                             <button type="button" id="copyButton"
@@ -289,6 +288,41 @@
                 </form>
             </div>
         </div>
+          <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="pattern-overlay opacity-10"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <a href="/" class="text-2xl font-bold text-white hover:text-gray-200 transition-colors">ChatWidget</a>
+                    <p class="mt-4 text-gray-400 max-w-md">Transform your customer support with our free, easy-to-install chat widget. Connect with your customers in real-time.</p>
+                </div>
+                <nav aria-label="Footer navigation">
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#why-us" class="text-gray-400 hover:text-white transition-colors">Why Choose Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="/pages/guide.html" class="text-gray-400 hover:text-white transition-colors">User Guide</a></li>
+                        <li><a href="/pages/terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="/pages/privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="/pages/blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Get Started</h3>
+                    <a href="/pages/form.html" class="inline-block bg-white text-primary-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                        Try Now
+                    </a>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2023 ChatWidget. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     </main>
 
     <script>
@@ -472,5 +506,6 @@
         // Add initial question
         addQuestion();
     </script>
+  
 </body>
 </html>

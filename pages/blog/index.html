@@ -30,6 +30,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
             theme: {
@@ -71,10 +72,7 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                    <a href="/" class="flex items-center gap-2 text-gray-600 hover:text-primary-500 transition-colors">
-                        <i class="ri-arrow-left-line"></i>
-                        <span>Back to Home</span>
-                    </a>
+                 
                     <a href="/" class="font-['Pacifico'] text-2xl text-primary-500">ChatWidget</a>
                 </div>
                
@@ -98,9 +96,34 @@
                 </div>
             </div>
         </section>
-<section>
-  <script src="pages/blog/rss.xml"></script>
-</section>
+
+        <!-- Blog Content -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <!-- Search and Filters -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="blog-search">
+                        <i class="ri-search-line"></i>
+                        <input type="text" id="searchInput" placeholder="Search articles..." class="w-full">
+                    </div>
+                    <div class="blog-filters" id="categoryFilters">
+                        <button class="filter-button active" data-category="all">All</button>
+                        <button class="filter-button" data-category="Customer Service">Customer Service</button>
+                        <button class="filter-button" data-category="Technical">Technical</button>
+                        <button class="filter-button" data-category="Technology">Technology</button>
+                        <button class="filter-button" data-category="Business">Business</button>
+                    </div>
+                </div>
+
+                <!-- Blog Grid -->
+                <div class="max-w-7xl mx-auto">
+                    <div class="blog-grid" id="blogGrid">
+                        <!-- Articles will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Newsletter Section -->
         <section class="py-16">
             <div class="container mx-auto px-4">
@@ -147,7 +170,103 @@
     </footer>
 
     <script>
-        // Newsletter form submission
+        // Fetch and parse RSS feed
+        async function fetchRSSFeed() {
+            try {
+                const response = await fetch('rss.xml');
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                return Array.from(xml.querySelectorAll('item')).map(item => ({
+                    title: item.querySelector('title').textContent,
+                    link: item.querySelector('link').textContent,
+                    description: item.querySelector('description').textContent,
+                    author: item.querySelector('author').textContent,
+                    category: item.querySelector('category').textContent,
+                    image: item.querySelector('image').textContent,
+                    readTime: item.querySelector('readTime').textContent,
+                    pubDate: new Date(item.querySelector('pubDate').textContent)
+                }));
+            } catch (error) {
+                console.error('Error fetching RSS feed:', error);
+                return [];
+            }
+        }
+
+        // Create blog card HTML
+        function createBlogCard(article) {
+            return `
+                <a href="${article.link}" class="blog-card">
+                    <img src="${article.image}" alt="${article.title}" class="blog-card-image" loading="lazy">
+                    <div class="blog-card-content">
+                        <span class="blog-card-category">${article.category}</span>
+                        <h2 class="blog-card-title">${article.title}</h2>
+                        <p class="blog-card-description">${article.description}</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-card-author">
+                                <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(article.author)}" 
+                                     alt="${article.author}" 
+                                     class="blog-card-author-image"
+                                     loading="lazy">
+                                <span>${article.author}</span>
+                            </div>
+                            <span>${article.readTime} min read</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Filter articles
+        function filterArticles(articles, category, searchTerm = '') {
+            return articles.filter(article => {
+                const matchesCategory = category === 'all' || article.category === category;
+                const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    article.description.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        // Initialize blog
+        async function initBlog() {
+            const articles = await fetchRSSFeed();
+            const grid = document.getElementById('blogGrid');
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilters = document.getElementById('categoryFilters');
+            let currentCategory = 'all';
+
+            // Render articles
+            function renderArticles(filtered) {
+                grid.innerHTML = filtered.map(createBlogCard).join('');
+            }
+
+            // Initial render
+            renderArticles(articles);
+
+            // Search handler
+            searchInput.addEventListener('input', (e) => {
+                const filtered = filterArticles(articles, currentCategory, e.target.value);
+                renderArticles(filtered);
+            });
+
+            // Category filter handler
+            categoryFilters.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-button')) {
+                    // Update active state
+                    categoryFilters.querySelectorAll('.filter-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+
+                    // Filter and render
+                    currentCategory = e.target.dataset.category;
+                    const filtered = filterArticles(articles, currentCategory, searchInput.value);
+                    renderArticles(filtered);
+                }
+            });
+        }
+
+        // Newsletter form handler
         document.getElementById('newsletterForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const toast = document.createElement('div');
@@ -157,6 +276,9 @@
             setTimeout(() => toast.remove(), 3000);
             e.target.reset();
         });
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', initBlog);
     </script>
 </body>
 </html>
