@@ -29,6 +29,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#4f46e5',
+                            600: '#4338ca',
+                            700: '#3730a3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .blog-content {
             font-family: 'Playfair Display', serif;
@@ -48,6 +65,7 @@
         .prose p {
             margin-bottom: 1.5rem;
             color: #4b5563;
+            line-height: 1.8;
         }
         .prose ul {
             margin-top: 1.25rem;
@@ -60,23 +78,36 @@
             margin-bottom: 0.5rem;
             color: #4b5563;
         }
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/src/pattern.svg');
+            background-repeat: repeat;
+            background-size: 40px 40px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
     </style>
 </head>
-<body class="bg-gray-50">    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+<body class="bg-gray-50">    
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                    <a href="/pages/blog/index.html" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
+                    <a href="/pages/blog/index.html" class="flex items-center gap-2 text-gray-600 hover:text-primary-500 transition-colors">
                         <i class="ri-arrow-left-line"></i>
                         <span>Back to Blog</span>
                     </a>
-                    <a href="/" class="font-['Pacifico'] text-2xl text-primary">ChatWidget</a>
+                    <a href="/" class="font-['Pacifico'] text-2xl text-primary-500">ChatWidget</a>
                 </div>
                
-                <nav class="hidden md:flex space-x-8" style="display: flex; align-items: center; justify-content: space-between;">
-                    <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="#" class="text-primary font-medium">Blog</a>
-                    <a href="/pages/form.html" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 transition-colors">Try Now</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-primary-500 transition-colors">Home</a>
+                    <a href="/pages/blog/index.html" class="text-gray-700 hover:text-primary-500 transition-colors">Blog</a>
+                    <a href="/pages/form.html" class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">Try Now</a>
                 </nav>
             </div>
         </div>
@@ -86,7 +117,7 @@
         <article>
             <!-- Hero Section -->
             <div class="relative h-[400px] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1565847996490-4ba33e46c2ce?auto=format&fit=crop&q=80&w=2070" 
+                <img src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" 
                      alt="Customer Support Tips" 
                      class="w-full h-full object-cover"
                      width="2070"
@@ -95,7 +126,7 @@
                 <div class="absolute inset-0 flex items-center">
                     <div class="container mx-auto px-4">
                         <div class="max-w-3xl">
-                            <span class="inline-block px-3 py-1 bg-primary/20 text-white rounded-full text-sm font-medium mb-4">
+                            <span class="inline-block px-3 py-1 bg-primary-50/20 text-white rounded-full text-sm font-medium mb-4">
                                 Customer Service
                             </span>
                             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 blog-content">
@@ -103,7 +134,7 @@
                             </h1>
                             <div class="flex items-center gap-6 text-white">
                                 <div class="flex items-center gap-3">
-                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" 
+                                    <img src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" 
                                          alt="Sarah Johnson" 
                                          class="w-12 h-12 rounded-full object-cover"
                                          width="48"
@@ -137,16 +168,16 @@
                     <!-- Social Share Sidebar -->
                     <div class="w-16 flex-shrink-0">
                         <div class="sticky top-24 space-y-4">
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on Twitter">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary-500 hover:text-white transition-colors" aria-label="Share on Twitter">
                                 <i class="ri-twitter-fill"></i>
                             </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on Facebook">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary-500 hover:text-white transition-colors" aria-label="Share on Facebook">
                                 <i class="ri-facebook-fill"></i>
                             </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on LinkedIn">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary-500 hover:text-white transition-colors" aria-label="Share on LinkedIn">
                                 <i class="ri-linkedin-fill"></i>
                             </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Copy link">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary-500 hover:text-white transition-colors" aria-label="Copy link">
                                 <i class="ri-link-m"></i>
                             </button>
                         </div>
@@ -159,62 +190,78 @@
                                 In today's competitive business landscape, providing exceptional customer support isn't just an option – it's a necessity. Here are 10 proven tips to elevate your customer support game and create memorable experiences for your customers.
                             </p>
 
-                            <h2>1. Respond Quickly</h2>
+                            <div class="my-8 p-6 bg-gray-50 rounded-xl">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Article Contents</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#respond-quickly" class="text-primary-500 hover:underline">1. Respond Quickly</a></li>
+                                    <li><a href="#personalize" class="text-primary-500 hover:underline">2. Personalize Your Interactions</a></li>
+                                    <li><a href="#listen" class="text-primary-500 hover:underline">3. Listen Actively</a></li>
+                                    <li><a href="#empathize" class="text-primary-500 hover:underline">4. Empathize with Customers</a></li>
+                                    <li><a href="#positive-language" class="text-primary-500 hover:underline">5. Use Positive Language</a></li>
+                                    <li><a href="#follow-up" class="text-primary-500 hover:underline">6. Follow Up Consistently</a></li>
+                                    <li><a href="#document" class="text-primary-500 hover:underline">7. Document Everything</a></li>
+                                    <li><a href="#train" class="text-primary-500 hover:underline">8. Train Your Team Regularly</a></li>
+                                    <li><a href="#feedback" class="text-primary-500 hover:underline">9. Collect and Act on Feedback</a></li>
+                                    <li><a href="#technology" class="text-primary-500 hover:underline">10. Leverage Technology</a></li>
+                                </ul>
+                            </div>
+
+                            <h2 id="respond-quickly">1. Respond Quickly</h2>
                             <p>
                                 Speed is crucial in customer support. Aim to respond to customer inquiries within minutes, not hours. Quick response times show that you value your customers' time and are committed to solving their problems promptly.
                             </p>
 
-                            <h2>2. Personalize Your Interactions</h2>
+                            <h2 id="personalize">2. Personalize Your Interactions</h2>
                             <p>
                                 Address customers by their names and maintain a record of their previous interactions. Personalization makes customers feel valued and helps build stronger relationships.
                             </p>
 
-                            <h2>3. Listen Actively</h2>
+                            <h2 id="listen">3. Listen Actively</h2>
                             <p>
                                 Pay close attention to what customers are saying. Don't just wait for your turn to speak – truly understand their concerns and needs before responding.
                             </p>
 
-                            <h2>4. Empathize with Customers</h2>
+                            <h2 id="empathize">4. Empathize with Customers</h2>
                             <p>
                                 Show genuine empathy when customers face issues. Acknowledge their frustrations and assure them that you're committed to finding a solution.
                             </p>
 
-                            <h2>5. Use Positive Language</h2>
+                            <h2 id="positive-language">5. Use Positive Language</h2>
                             <p>
                                 Frame your responses positively, even when delivering negative news. Focus on what you can do rather than what you can't.
                             </p>
 
-                            <h2>6. Follow Up Consistently</h2>
+                            <h2 id="follow-up">6. Follow Up Consistently</h2>
                             <p>
                                 Don't just solve the immediate problem – follow up to ensure the solution worked and the customer is satisfied. This extra step can turn a good experience into a great one.
                             </p>
 
-                            <h2>7. Document Everything</h2>
+                            <h2 id="document">7. Document Everything</h2>
                             <p>
                                 Maintain detailed records of customer interactions and solutions. This helps provide consistent support and identifies common issues that need addressing.
                             </p>
 
-                            <h2>8. Train Your Team Regularly</h2>
+                            <h2 id="train">8. Train Your Team Regularly</h2>
                             <p>
                                 Invest in ongoing training for your support team. Keep them updated on new products, services, and best practices in customer service.
                             </p>
 
-                            <h2>9. Collect and Act on Feedback</h2>
+                            <h2 id="feedback">9. Collect and Act on Feedback</h2>
                             <p>
                                 Regularly gather customer feedback and use it to improve your support processes. Show customers that their opinions matter by implementing their suggestions.
                             </p>
 
-                            <h2>10. Leverage Technology</h2>
+                            <h2 id="technology">10. Leverage Technology</h2>
                             <p>
                                 Use modern tools like chat widgets and customer support software to streamline your support operations and provide better service.
                             </p>
 
-                            <div class="bg-primary/5 p-8 rounded-xl mt-12">
+                            <div class="bg-primary-50 p-8 rounded-xl mt-12">
                                 <h3 class="text-xl font-bold text-gray-900 mb-4">Ready to Improve Your Customer Support?</h3>
                                 <p class="mb-6">
                                     Start implementing these tips today and see the difference in your customer satisfaction levels. And don't forget – a chat widget can help you deliver faster, more efficient support.
                                 </p>
-                                <a href="/pages/form.html" class="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                                <a href="/pages/form.html" class="inline-flex items-center justify-center px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
                                     Try ChatWidget Free
                                     <i class="ri-arrow-right-line ml-2"></i>
                                 </a>
@@ -250,7 +297,7 @@
                                              height="400"
                                              loading="lazy">
                                         <div class="p-6">
-                                            <h4 class="text-lg font-semibold group-hover:text-primary transition-colors">Scaling Customer Support</h4>
+                                            <h4 class="text-lg font-semibold group-hover:text-primary-500 transition-colors">Scaling Customer Support</h4>
                                             <p class="text-gray-600 mt-2">Learn how to effectively scale your customer support as your business grows.</p>
                                         </div>
                                     </article>
@@ -264,7 +311,7 @@
                                              height="400"
                                              loading="lazy">
                                         <div class="p-6">
-                                            <h4 class="text-lg font-semibold group-hover:text-primary transition-colors">The Future of Customer Service</h4>
+                                            <h4 class="text-lg font-semibold group-hover:text-primary-500 transition-colors">The Future of Customer Service</h4>
                                             <p class="text-gray-600 mt-2">Exploring upcoming trends and innovations in customer service technology.</p>
                                         </div>
                                     </article>
@@ -287,7 +334,7 @@
                                            required
                                            aria-label="Email for newsletter">
                                     <button type="submit" 
-                                            class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                            class="w-full bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
                                         Subscribe
                                     </button>
                                 </form>
@@ -297,10 +344,10 @@
                             <div class="bg-gray-50 rounded-xl p-6">
                                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Popular Tags</h3>
                                 <div class="flex flex-wrap gap-2">
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Customer Service</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Support Tips</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Best Practices</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Customer Experience</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary-500 hover:text-white transition-colors">Customer Service</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary-500 hover:text-white transition-colors">Support Tips</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary-500 hover:text-white transition-colors">Best Practices</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary-500 hover:text-white transition-colors">Customer Experience</a>
                                 </div>
                             </div>
                         </div>
@@ -310,8 +357,9 @@
         </article>
     </main>
 
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="pattern-overlay opacity-10"></div>
+        <div class="container mx-auto px-4 relative">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-2">
                     <a href="/" class="text-2xl font-['Pacifico'] text-white mb-4 block">ChatWidget</a>
@@ -322,6 +370,7 @@
                     <ul class="space-y-2">
                         <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                         <li><a href="/pages/blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="/pages/form.html" class="text-gray-400 hover:text-white transition-colors">Try Now</a></li>
                     </ul>
                 </div>
             </div>
@@ -344,13 +393,14 @@
         });
 
         // Social share buttons
-        document.querySelectorAll('.social-share').forEach(button => {
+        document.querySelectorAll('[aria-label^="Share on"]').forEach(button => {
             button.addEventListener('click', () => {
+                const platform = button.getAttribute('aria-label').split(' ')[2].toLowerCase();
                 const url = encodeURIComponent(window.location.href);
                 const title = encodeURIComponent(document.title);
                 let shareUrl;
 
-                switch(button.dataset.platform) {
+                switch(platform) {
                     case 'twitter':
                         shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
                         break;
@@ -376,6 +426,16 @@
             toast.textContent = 'Link copied to clipboard!';
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
