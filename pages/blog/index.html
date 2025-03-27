@@ -1,344 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Widget Configurator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Explore the latest insights on customer service, chat widgets, and support strategies. Learn how to improve your customer experience with our expert guides and tips.">
+    <meta name="keywords" content="customer service blog, chat widget tips, customer support strategies, business communication">
+    <meta name="author" content="ChatWidget">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chatwidget.com/blog">
+    <meta property="og:title" content="ChatWidget Blog - Customer Service Insights & Support Strategies">
+    <meta property="og:description" content="Explore the latest insights on customer service, chat widgets, and support strategies.">
+    <meta property="og:image" content="https://chatwidget.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://chatwidget.com/blog">
+    <meta name="twitter:title" content="ChatWidget Blog - Customer Service Insights & Support Strategies">
+    <meta name="twitter:description" content="Explore the latest insights on customer service, chat widgets, and support strategies.">
+    <meta name="twitter:image" content="https://chatwidget.com/og-image.jpg">
+
+    <title>ChatWidget Blog - Customer Service Insights & Support Strategies</title>
+    <link rel="canonical" href="https://chatwidget.com/blog">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .color-picker::-webkit-color-swatch-wrapper {
-            padding: 0;
-        }
-
-        .color-picker::-webkit-color-swatch {
-            border: none;
-            border-radius: 0.375rem;
-        }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+        .blog-title {
+            font-family: 'Playfair Display', serif;
         }
     </style>
 </head>
-
 <body class="bg-gray-50">
-    <div class="gradient-bg text-white py-12">
-        <button type="button"
-            class="px-4 py-2 mx-auto border bg-white-600 text-black rounded-lg hover:text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all text-sm font-medium flex items-center gap-2"
-            onclick="
-        window.location.href = '/';">
-            Back to Home
-        </button>
-        <div class="max-w-4xl mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Widget Configuration</h1>
-            <p class="text-lg opacity-90">Customize your business chat widget with ease</p>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-8">
+                    <a href="/" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Back to Home</span>
+                    </a>
+                    <a href="/" class="font-['Pacifico'] text-2xl text-primary">ChatWidget</a>
+                </div>
+               
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="#" class="text-primary font-medium">Blog</a>
+                    <a href="/pages/form.html" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">Try Now</a>
+                </nav>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="max-w-4xl mx-auto px-6 -mt-8">
-        <div class="glass-effect rounded-xl shadow-2xl p-8 mb-12">
-            <form id="configForm" class="space-y-12">
-                <!-- Business Information -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                        <h2 class="text-2xl font-semibold text-gray-900">Business Information</h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="businessName" class="block text-sm font-medium text-gray-700 mb-2">Business
-                                Name</label>
-                            <input type="text" id="businessName" name="businessName"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                placeholder="Enter your business name">
-                        </div>
-
-                        <div>
-                            <label for="colorScheme" class="block text-sm font-medium text-gray-700 mb-2">Brand
-                                Color</label>
-                            <input type="color" id="colorScheme" name="colorScheme" value="#4f46e5"
-                                class="w-full h-12 rounded-lg border border-gray-300 cursor-pointer color-picker">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="businessIcon" class="block text-sm font-medium text-gray-700 mb-2">Business
-                            Icon</label>
-                        <div
-                            class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-indigo-500 transition-all cursor-pointer">
-                            <div class="space-y-2 text-center">
-                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
-                                    viewBox="0 0 48 48" aria-hidden="true">
-                                    <path
-                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <div class="text-sm text-gray-600">
-                                    <label for="businessIcon"
-                                        class="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                        <span>Upload a file</span>
-                                        <input id="businessIcon" name="businessIcon" type="file" accept="image/*"
-                                            class="sr-only">
-                                    </label>
-                                </div>
-                                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="welcomeMessage" class="block text-sm font-medium text-gray-700 mb-2">Welcome
-                            Message</label>
-                        <textarea id="welcomeMessage" name="welcomeMessage" rows="3"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="Enter a welcome message for your visitors"></textarea>
-                    </div>
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-r from-primary/90 to-primary py-20 text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 blog-title">Customer Service Insights & Support Strategies</h1>
+                    <p class="text-xl opacity-90">Explore our latest articles on improving customer experience, support strategies, and chat widget implementation.</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Quick Questions -->
-                <div class="space-y-6">
-                    <div class="flex items-center justify-between gap-3 mb-6">
-                        <div class="flex items-center gap-3">
-                            <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                            <h2 class="text-2xl font-semibold text-gray-900">Quick Questions & Answers</h2>
-                        </div>
-                        <button type="button" id="addQuestionBtn"
-                            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all text-sm font-medium flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4v16m8-8H4" />
-                            </svg>
-                            Add Question
+        <!-- Featured Articles -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 blog-title">Featured Articles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <a href="/pages/blog/articles/10-tips-for-better-customer-support.html" class="group">
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+                            <img src="https://images.unsplash.com/photo-1565847996490-4ba33e46c2ce?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Customer Support Tips" 
+                                 class="w-full h-48 object-cover"
+                                 width="800"
+                                 height="400"
+                                 loading="lazy">
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Customer Service</span>
+                                    <span class="text-gray-500 text-sm">5 min read</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">10 Tips for Better Customer Support</h3>
+                                <p class="text-gray-600">Essential strategies to improve your customer support and create exceptional customer experiences.</p>
+                            </div>
+                        </article>
+                    </a>
+
+                    <!-- Article 2 -->
+                    <a href="/pages/blog/articles/chat-widget-implementation-guide.html" class="group">
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Chat Widget Implementation" 
+                                 class="w-full h-48 object-cover"
+                                 width="800"
+                                 height="400"
+                                 loading="lazy">
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Guide</span>
+                                    <span class="text-gray-500 text-sm">4 min read</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Chat Widget Implementation Guide</h3>
+                                <p class="text-gray-600">Step-by-step guide to implementing a chat widget on your website for better customer engagement.</p>
+                            </div>
+                        </article>
+                    </a>
+
+                    <!-- Article 3 -->
+                    <a href="/pages/blog/articles/future-of-customer-service-2025.html" class="group">
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Future of Customer Service" 
+                                 class="w-full h-48 object-cover"
+                                 width="800"
+                                 height="400"
+                                 loading="lazy">
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Technology</span>
+                                    <span class="text-gray-500 text-sm">6 min read</span>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">The Future of Customer Service in 2025</h3>
+                                <p class="text-gray-600">Exploring upcoming trends and innovations that will shape customer service technology.</p>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Articles -->
+        <section class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 blog-title">Latest Articles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Article 4 -->
+                    <a href="/pages/blog/articles/scaling-customer-support.html" class="group">
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+                            <div class="md:flex">
+                                <div class="md:w-2/5">
+                                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" 
+                                         alt="Scaling Customer Support" 
+                                         class="w-full h-48 md:h-full object-cover"
+                                         width="800"
+                                         height="400"
+                                         loading="lazy">
+                                </div>
+                                <div class="p-6 md:w-3/5">
+                                    <div class="flex items-center gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Business</span>
+                                        <span class="text-gray-500 text-sm">7 min read</span>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Scaling Customer Support: A Comprehensive Guide</h3>
+                                    <p class="text-gray-600">Learn effective strategies for scaling your customer support operations while maintaining quality.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+
+                    <!-- Article 5 -->
+                    <a href="/pages/blog/articles/why-chat-widget-is-essential.html" class="group">
+                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+                            <div class="md:flex">
+                                <div class="md:w-2/5">
+                                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" 
+                                         alt="Why Chat Widget is Essential" 
+                                         class="w-full h-48 md:h-full object-cover"
+                                         width="800"
+                                         height="400"
+                                         loading="lazy">
+                                </div>
+                                <div class="p-6 md:w-3/5">
+                                    <div class="flex items-center gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Customer Service</span>
+                                        <span class="text-gray-500 text-sm">8 min read</span>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Why Chat Widget is Essential for Modern Businesses</h3>
+                                    <p class="text-gray-600">Discover why implementing a chat widget is crucial for modern business success and customer satisfaction.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-6 blog-title">Stay Updated</h2>
+                    <p class="text-gray-600 mb-8">Subscribe to our newsletter for the latest insights on customer service and support strategies.</p>
+                    <form class="flex gap-4 max-w-md mx-auto" id="newsletterForm">
+                        <input type="email" 
+                               placeholder="Enter your email" 
+                               class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary"
+                               required>
+                        <button type="submit" 
+                                class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                            Subscribe
                         </button>
-                    </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
-                    <div id="quickQuestions" class="space-y-6">
-                        <!-- Questions will be added here dynamically -->
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <a href="/" class="text-2xl font-['Pacifico'] text-white mb-4 block">ChatWidget</a>
+                    <p class="text-gray-400">Empowering businesses with better customer communication through innovative chat solutions.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="/pages/form.html" class="text-gray-400 hover:text-white transition-colors">Try ChatWidget</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="ri-twitter-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="ri-facebook-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="ri-linkedin-fill text-xl"></i>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Closing Message Configuration -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                        <h2 class="text-2xl font-semibold text-gray-900">Closing Message</h2>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 space-y-6">
-                        <div>
-                            <label for="messageClosing"
-                                class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                            <textarea id="messageClosing" name="messageClosing" rows="2"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                placeholder="Enter the message to show when all questions are answered"></textarea>
-                        </div>
-
-                        <div class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="messageClosingActionButton"
-                                        class="block text-sm font-medium text-gray-700 mb-2">Button Text 1</label>
-                                    <input type="text" id="messageClosingActionButton" name="messageClosingActionButton"
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                        placeholder="e.g., 'Contact on Facebook'">
-                                </div>
-
-                                <div>
-                                    <label for="messageClosingActionUrl"
-                                        class="block text-sm font-medium text-gray-700 mb-2">Action URL 1</label>
-                                    <input type="text" id="messageClosingActionUrl" name="messageClosingActionUrl"
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                        placeholder="e.g., https://m.me/username">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="messageClosingActionButton2"
-                                        class="block text-sm font-medium text-gray-700 mb-2">Button Text 2</label>
-                                    <input type="text" id="messageClosingActionButton2"
-                                        name="messageClosingActionButton2"
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                        placeholder="e.g., 'Email Us'">
-                                </div>
-
-                                <div>
-                                    <label for="messageClosingActionUrl2"
-                                        class="block text-sm font-medium text-gray-700 mb-2">Action URL 2</label>
-                                    <input type="text" id="messageClosingActionUrl2" name="messageClosingActionUrl2"
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                        placeholder="e.g., mailto:support@example.com">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Installation Code -->
-                <div class="space-y-6">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="h-8 w-1 bg-indigo-600 rounded-full"></div>
-                        <h2 class="text-2xl font-semibold text-gray-900">Installation Code</h2>
-                    </div>
-
-                    <div class="relative">
-                        <pre id="installationCode"
-                            class="bg-gray-900 text-gray-100 rounded-xl p-6 overflow-x-auto text-sm font-mono"></pre>
-                        <button type="button" id="copyButton"
-                            class="absolute top-4 right-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all text-sm font-medium">
-                            Copy
-                        </button>
-                    </div>
-                </div>
-            </form>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 ChatWidget. All rights reserved.</p>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        let imageBase64 = '';
-        let questionCount = 0;
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = 'Thank you for subscribing!';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+            e.target.reset();
+        });
 
-        function createQuestionElement(index) {
-            const div = document.createElement('div');
-            div.className = 'bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:border-indigo-500 transition-all relative';
-            div.innerHTML = `
-                <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 focus:outline-none" onclick="removeQuestion(this.parentElement)">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Question ${index + 1}</label>
-                        <input type="text" name="question${index + 1}" 
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="Enter your question">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Answer ${index + 1}</label>
-                        <textarea name="answer${index + 1}" rows="2"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="Enter the answer"></textarea>
-                    </div>
-                </div>
-            `;
-            return div;
-        }
-
-        function addQuestion() {
-            if (questionCount < 10) {
-                const questionsContainer = document.getElementById('quickQuestions');
-                questionsContainer.appendChild(createQuestionElement(questionCount));
-                questionCount++;
-                updateInstallationCode();
-            }
-        }
-
-        function removeQuestion(element) {
-            element.remove();
-            questionCount--;
-            updateInstallationCode();
-
-            // Update question numbers
-            const questions = document.querySelectorAll('#quickQuestions > div');
-            questions.forEach((q, index) => {
-                const labels = q.querySelectorAll('label');
-                const inputs = q.querySelectorAll('input, textarea');
-                labels[0].textContent = `Question ${index + 1}`;
-                labels[1].textContent = `Answer ${index + 1}`;
-                inputs[0].name = `question${index + 1}`;
-                inputs[1].name = `answer${index + 1}`;
-            });
-        }
-
-        function generateConfig() {
-            const config = {
-                businessName: document.getElementById('businessName').value,
-                colorScheme: document.getElementById('colorScheme').value,
-                image: imageBase64,
-                welcomeMessage: document.getElementById('welcomeMessage').value,
-                messageClosing: document.getElementById('messageClosing').value,
-                messageClosingActionButton: document.getElementById('messageClosingActionButton').value,
-                messageClosingActionUrl: document.getElementById('messageClosingActionUrl').value,
-                messageClosingActionButton2: document.getElementById('messageClosingActionButton2').value,
-                messageClosingActionUrl2: document.getElementById('messageClosingActionUrl2').value,
-                quickQuestions: []
-            };
-
-            // Collect quick questions
-            const questions = document.querySelectorAll('#quickQuestions > div');
-            questions.forEach((q, i) => {
-                const question = q.querySelector(`[name="question${i + 1}"]`).value;
-                const answer = q.querySelector(`[name="answer${i + 1}"]`).value;
-                if (question && answer) {
-                    config.quickQuestions.push({ question, answer });
+        // Initialize Tailwind primary color
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4f46e5'
+                    }
                 }
-            });
-
-            return config;
-        }
-
-        function updateInstallationCode() {
-            const config = generateConfig();
-            const code = `<!-- Business Widget Installation Code -->
-<script src="https://free-widget.netlify.app/chat.js"><\/script>
-<script>
-    window.businessChatConfig = ${JSON.stringify(config, null, 2)};
-<\/script>`;
-
-            document.getElementById('installationCode').textContent = code;
-        }
-
-        // Handle image upload
-        document.getElementById('businessIcon').addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    imageBase64 = reader.result;
-                    updateInstallationCode();
-                };
-                reader.readAsDataURL(file);
             }
-        });
-
-        // Handle form changes
-        document.getElementById('configForm').addEventListener('input', (e) => {
-            if (e.target.id !== 'businessIcon') {
-                updateInstallationCode();
-            }
-        });
-
-        // Handle add question button
-        document.getElementById('addQuestionBtn').addEventListener('click', addQuestion);
-
-        // Handle copy button
-        document.getElementById('copyButton').addEventListener('click', () => {
-            const code = document.getElementById('installationCode').textContent;
-            navigator.clipboard.writeText(code);
-
-            const button = document.getElementById('copyButton');
-            button.textContent = 'Copied!';
-            setTimeout(() => {
-                button.textContent = 'Copy';
-            }, 2000);
-        });
-
-        // Add initial question
-        addQuestion();
+        }
     </script>
 </body>
-
 </html>

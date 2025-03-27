@@ -27,6 +27,28 @@
     </style>
 </head>
 <body class="bg-gray-50">
+
+ 
+        <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-8">
+                    <a href="/pages/blog/index.html" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Back to Blog</span>
+                    </a>
+                    <a href="/" class="font-['Pacifico'] text-2xl text-primary">ChatWidget</a>
+                </div>
+               
+                <nav class="hidden md:flex space-x-8" style="display: flex; align-items: center; justify-content: space-between;">
+                    <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="#" class="text-primary font-medium">Blog</a>
+                    <a href="/pages/form.html" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 transition-colors">Try Now</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+ <main class="gradient-bg text-white py-12">
     <div class="gradient-bg text-white py-12">
         <div class="max-w-4xl mx-auto px-6">
             <h1 class="text-4xl font-bold mb-4">Widget Configuration</h1>
@@ -175,7 +197,7 @@
             </form>
         </div>
     </div>
-
+</main>
     <script>
         let imageBase64 = '';
         let questionCount = 0;

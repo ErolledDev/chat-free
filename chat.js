@@ -278,7 +278,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 10px;
       padding: 10px 20px;
       background: var(--theme-color);
       color: white;
