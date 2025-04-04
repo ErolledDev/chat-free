@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Learn effective strategies for scaling your customer support operations. Discover how to maintain quality while growing your support team and handling increased volume.">
-    <meta name="keywords" content="scaling customer support, support team growth, customer service scaling, support operations">
+    <meta name="description" content="Learn effective strategies for scaling your customer support operations. Discover proven methods to maintain quality while growing your support team and handling increased volume.">
+    <meta name="keywords" content="scaling customer support, support team growth, customer service scaling, support operations, customer service management">
     <meta name="author" content="David Wilson">
     <meta name="robots" content="index, follow">
     
@@ -12,13 +12,13 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://chatwidget.com/blog/articles/scaling-customer-support">
     <meta property="og:title" content="Scaling Customer Support: A Comprehensive Guide - ChatWidget Blog">
-    <meta property="og:description" content="Learn effective strategies for scaling your customer support operations while maintaining quality.">
+    <meta property="og:description" content="Learn effective strategies for scaling your customer support operations while maintaining quality and efficiency.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1563986768609-322da13575f3">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Scaling Customer Support: A Comprehensive Guide - ChatWidget Blog">
-    <meta name="twitter:description" content="Learn effective strategies for scaling your customer support operations while maintaining quality.">
+    <meta name="twitter:description" content="Learn effective strategies for scaling your customer support operations while maintaining quality and efficiency.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1563986768609-322da13575f3">
 
     <title>Scaling Customer Support: A Comprehensive Guide - ChatWidget Blog</title>
@@ -27,76 +27,121 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <style>
-        .blog-content {
-            font-family: 'Playfair Display', serif;
-        }
+        /* Typography */
         .prose {
-            max-width: 65ch;
-            line-height: 1.75;
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #374151;
         }
-        .prose h2 {
-            font-family: 'Playfair Display', serif;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.875rem;
+        
+        .prose h1, .prose h2, .prose h3, .prose h4 {
+            font-family: 'Inter', sans-serif;
+            color: #111827;
+            margin-top: 2em;
+            margin-bottom: 1em;
             font-weight: 700;
-            color: #1f2937;
+            line-height: 1.3;
         }
+
+        .prose h1 { font-size: 2.5em; }
+        .prose h2 { font-size: 1.75em; }
+        .prose h3 { font-size: 1.5em; }
+        
         .prose p {
-            margin-bottom: 1.5rem;
-            color: #4b5563;
+            margin-bottom: 1.5em;
         }
-        .prose ul {
-            margin-top: 1.25rem;
-            margin-bottom: 1.25rem;
-            list-style-type: disc;
-            padding-left: 1.625rem;
+
+        .prose ul, .prose ol {
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+            padding-left: 1.625em;
         }
+
         .prose li {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .prose blockquote {
+            border-left: 3px solid #4f46e5;
+            padding-left: 1em;
+            margin: 1.5em 0;
+            font-style: italic;
             color: #4b5563;
+        }
+
+        .prose img {
+            border-radius: 0.5rem;
+            margin: 2em 0;
+        }
+
+        .prose code {
+            background: #f3f4f6;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25em;
+            font-size: 0.875em;
+        }
+
+        /* Article specific */
+        .article-header {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .reading-progress {
+            background: linear-gradient(to right, #4f46e5 var(--scroll), transparent 0);
+            position: fixed;
+            width: 100%;
+            height: 3px;
+            top: 64px;
+            z-index: 100;
+        }
+
+        /* Highlight text selection */
+        ::selection {
+            background: rgba(79, 70, 229, 0.2);
         }
     </style>
 </head>
 <body class="bg-gray-50">
-     <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div class="container mx-auto px-4">
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                    <a href="/pages/blog/index.html" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
-                        <i class="ri-arrow-left-line"></i>
-                        <span>Back to Blog</span>
-                    </a>
-                    <a href="/" class="font-['Pacifico'] text-2xl text-primary">ChatWidget</a>
+                   
+                    <a href="/" class="text-2xl font-bold text-indigo-600">ChatWidget</a>
                 </div>
-               
-                <nav class="hidden md:flex space-x-8" style="display: flex; align-items: center; justify-content: space-between;">
-                    <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="#" class="text-primary font-medium">Blog</a>
-                    <a href="/pages/form.html" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 transition-colors">Try Now</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="/pages/blog/index.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Blog</a>
+                    <a href="/pages/form.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Try Now</a>
                 </nav>
             </div>
         </div>
     </header>
-    <main class="pt-24">
+
+    <main class="pt-16">
         <article>
             <!-- Hero Section -->
-            <div class="relative h-[400px] overflow-hidden">
+            <div class="relative h-[600px] overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=2070" 
-                     alt="Scaling Customer Support" 
+                     alt="Scaling Customer Support Operations" 
                      class="w-full h-full object-cover"
                      width="2070"
                      height="1380">
-                <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
                 <div class="absolute inset-0 flex items-center">
-                    <div class="container mx-auto px-4">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="max-w-3xl">
-                            <span class="inline-block px-3 py-1 bg-primary/20 text-white rounded-full text-sm font-medium mb-4">
-                                Business
+                            <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium mb-4">
+                                Business Growth
                             </span>
                             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 blog-content">
                                 Scaling Customer Support: A Comprehensive Guide
@@ -117,7 +162,7 @@
                                 <div class="flex items-center gap-4 text-sm">
                                     <span class="flex items-center gap-2">
                                         <i class="ri-time-line"></i>
-                                        <span>7 min read</span>
+                                        <span>8 min read</span>
                                     </span>
                                     <span class="flex items-center gap-2">
                                         <i class="ri-calendar-line"></i>
@@ -131,121 +176,140 @@
             </div>
 
             <!-- Article Content -->
-            <div class="container mx-auto px-4 py-12">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="flex gap-12">
                     <!-- Social Share Sidebar -->
-                    <div class="w-16 flex-shrink-0">
+                    <aside class="hidden lg:block w-16 flex-shrink-0">
                         <div class="sticky top-24 space-y-4">
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on Twitter">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Share on Twitter">
                                 <i class="ri-twitter-fill"></i>
                             </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on Facebook">
-                                <i class="ri-facebook-fill"></i>
-                            </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on LinkedIn">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Share on LinkedIn">
                                 <i class="ri-linkedin-fill"></i>
                             </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Copy link">
-                                <i class="ri-link-m"></i>
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Share on Facebook">
+                                <i class="ri-facebook-fill"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Copy link">
+                                <i class="ri-link"></i>
                             </button>
                         </div>
-                    </div>
+                    </aside>
 
                     <!-- Main Content -->
                     <div class="flex-1 max-w-3xl">
                         <div class="prose">
                             <p class="text-xl leading-relaxed">
-                                As your business grows, scaling customer support becomes crucial yet challenging. Learn how to expand your support operations while maintaining quality and efficiency.
+                                As your business grows, scaling customer support becomes crucial yet challenging. Learn how to expand your support operations while maintaining quality and efficiency. This comprehensive guide will help you navigate the complexities of scaling your customer support team.
                             </p>
 
-                            <h2>Understanding the Challenges</h2>
+                            <blockquote>
+                                "Companies that successfully scale their customer support see a 35% increase in customer satisfaction and a 25% reduction in churn rate."
+                                <cite>— Customer Experience Report 2025</cite>
+                            </blockquote>
+
+                            <h2>Understanding the Challenges of Scaling Support</h2>
                             <p>
-                                Scaling customer support isn't just about hiring more people. It involves maintaining consistent quality, managing increased complexity, and optimizing resources while keeping costs under control.
+                                Scaling customer support isn't just about hiring more people. It involves maintaining consistent quality, managing increased complexity, and optimizing resources while keeping costs under control. The key challenges include:
                             </p>
+                            <ul>
+                                <li>Maintaining service quality while growing</li>
+                                <li>Training and onboarding new team members efficiently</li>
+                                <li>Implementing standardized processes</li>
+                                <li>Managing increased support volume</li>
+                                <li>Keeping support costs sustainable</li>
+                            </ul>
 
                             <h2>Building a Scalable Foundation</h2>
                             <p>
                                 Before scaling, ensure your foundation is solid. This includes:
                             </p>
                             <ul>
-                                <li>Documented processes and procedures</li>
-                                <li>Standardized training programs</li>
-                                <li>Clear performance metrics</li>
-                                <li>Robust support infrastructure</li>
+                                <li>Documented processes and procedures that are easy to follow and update</li>
+                                <li>Comprehensive training programs for new hires</li>
+                                <li>Clear performance metrics and monitoring systems</li>
+                                <li>Robust support infrastructure that can handle growth</li>
+                                <li>Efficient knowledge management systems</li>
                             </ul>
 
-                            <h2>Leveraging Technology</h2>
+                            <h2>Leveraging Technology for Scale</h2>
                             <p>
-                                Technology plays a crucial role in scaling support operations. Implement:
+                                Technology plays a crucial role in scaling support operations effectively. Key technological components include:
                             </p>
                             <ul>
-                                <li>Help desk software for ticket management</li>
-                                <li>Knowledge base systems</li>
-                                <li>Chat widgets for real-time support</li>
-                                <li>Analytics tools for performance tracking</li>
+                                <li>Help desk software for efficient ticket management</li>
+                                <li>Knowledge base systems for self-service support</li>
+                                <li>Chat widgets for real-time customer interaction</li>
+                                <li>Analytics tools for performance tracking and optimization</li>
+                                <li>Automation tools for routine tasks</li>
                             </ul>
 
-                            <h2>Building Self-Service Options</h2>
+                            <h2>Building Effective Self-Service Options</h2>
                             <p>
-                                Empower customers to find answers themselves through:
+                                Self-service support is crucial for scaling efficiently. Implement these components:
                             </p>
                             <ul>
-                                <li>Comprehensive FAQ sections</li>
-                                <li>Video tutorials</li>
-                                <li>Interactive guides</li>
-                                <li>Community forums</li>
+                                <li>Comprehensive FAQ sections covering common issues</li>
+                                <li>Video tutorials for visual learners</li>
+                                <li>Interactive guides for complex processes</li>
+                                <li>Community forums for peer support</li>
+                                <li>AI-powered chatbots for 24/7 assistance</li>
                             </ul>
 
-                            <h2>Team Structure and Growth</h2>
+                            <h2>Creating a Scalable Team Structure</h2>
                             <p>
-                                Create a scalable team structure with:
+                                Your team structure needs to support growth. Consider these elements:
                             </p>
                             <ul>
-                                <li>Clear career paths</li>
-                                <li>Specialized roles</li>
-                                <li>Team leads and managers</li>
-                                <li>Regular training and development</li>
+                                <li>Clear career paths and progression opportunities</li>
+                                <li>Specialized roles for complex issues</li>
+                                <li>Team leads and managers for different support tiers</li>
+                                <li>Regular training and development programs</li>
+                                <li>Cross-training opportunities</li>
                             </ul>
 
-                            <h2>Quality Assurance</h2>
+                            <h2>Implementing Quality Assurance</h2>
                             <p>
-                                Maintain service quality through:
+                                Maintain service quality through systematic monitoring:
                             </p>
                             <ul>
-                                <li>Regular quality checks</li>
-                                <li>Customer feedback loops</li>
-                                <li>Performance monitoring</li>
+                                <li>Regular quality checks and audits</li>
+                                <li>Customer feedback collection and analysis</li>
+                                <li>Performance monitoring and coaching</li>
                                 <li>Continuous improvement processes</li>
+                                <li>Regular team feedback sessions</li>
                             </ul>
 
-                            <h2>Cost Management</h2>
+                            <h2>Managing Costs During Growth</h2>
                             <p>
-                                Control costs while scaling by:
+                                Control costs while scaling through:
                             </p>
                             <ul>
-                                <li>Optimizing agent efficiency</li>
-                                <li>Automating routine tasks</li>
-                                <li>Using data-driven staffing</li>
-                                <li>Implementing tiered support</li>
+                                <li>Optimizing agent efficiency and productivity</li>
+                                <li>Automating routine and repetitive tasks</li>
+                                <li>Using data-driven staffing models</li>
+                                <li>Implementing tiered support structures</li>
+                                <li>Investing in preventive support measures</li>
                             </ul>
 
-                            <h2>Measuring Success</h2>
+                            <h2>Measuring Success and KPIs</h2>
                             <p>
-                                Track key metrics including:
+                                Track these key metrics to ensure successful scaling:
                             </p>
                             <ul>
-                                <li>Customer satisfaction scores</li>
-                                <li>Resolution times</li>
+                                <li>Customer satisfaction scores (CSAT)</li>
+                                <li>First response and resolution times</li>
                                 <li>First contact resolution rates</li>
-                                <li>Cost per ticket</li>
+                                <li>Cost per ticket and resolution</li>
+                                <li>Agent productivity and efficiency</li>
                             </ul>
 
-                            <div class="bg-primary/5 p-8 rounded-xl mt-12">
-                                <h3 class="text-xl font-bold text-gray-900 mb-4">Start Scaling Your Support Today</h3>
+                            <div class="bg-indigo-50 p-8 rounded-xl mt-12">
+                                <h3 class="text-xl font-bold text-gray-900 mb-4">Ready to Scale Your Support Operations?</h3>
                                 <p class="mb-6">
-                                    Ready to scale your customer support? ChatWidget can help you handle growing support volumes efficiently while maintaining quality.
+                                    Start implementing these strategies today with ChatWidget. Our platform helps you handle growing support volumes efficiently while maintaining quality.
                                 </p>
-                                <a href="/pages/form.html" class="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                                <a href="/pages/form.html" class="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                                     Try ChatWidget Free
                                     <i class="ri-arrow-right-line ml-2"></i>
                                 </a>
@@ -263,7 +327,7 @@
                                      loading="lazy">
                                 <div>
                                     <h4 class="text-lg font-semibold">David Wilson</h4>
-                                    <p class="text-gray-600">Operations Director with 15+ years of experience in scaling customer support teams for fast-growing companies.</p>
+                                    <p class="text-gray-600">Operations Director with 15+ years of experience in scaling customer support teams for fast-growing companies. Regular speaker at CX conferences and consultant for leading tech companies.</p>
                                 </div>
                             </div>
                         </div>
@@ -271,17 +335,17 @@
                         <!-- Related Articles -->
                         <div class="mt-12 pt-12 border-t border-gray-200">
                             <h3 class="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
-                            <div class="grid grid-cols-2 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <a href="/pages/blog/articles/10-tips-for-better-customer-support.html" class="group">
                                     <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                                        <img src="https://images.unsplash.com/photo-1565847996490-4ba33e46c2ce?auto=format&fit=crop&q=80&w=800" 
+                                        <img src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=2070" 
                                              alt="Customer Support Tips" 
                                              class="w-full h-48 object-cover"
                                              width="800"
                                              height="400"
                                              loading="lazy">
                                         <div class="p-6">
-                                            <h4 class="text-lg font-semibold group-hover:text-primary transition-colors">10 Tips for Better Customer Support</h4>
+                                            <h4 class="text-lg font-semibold group-hover:text-indigo-600 transition-colors">10 Tips for Better Customer Support</h4>
                                             <p class="text-gray-600 mt-2">Essential strategies to improve your customer support and satisfaction levels.</p>
                                         </div>
                                     </article>
@@ -295,7 +359,7 @@
                                              height="400"
                                              loading="lazy">
                                         <div class="p-6">
-                                            <h4 class="text-lg font-semibold group-hover:text-primary transition-colors">The Future of Customer Service</h4>
+                                            <h4 class="text-lg font-semibold group-hover:text-indigo-600 transition-colors">The Future of Customer Service</h4>
                                             <p class="text-gray-600 mt-2">Exploring upcoming trends and innovations in customer service technology.</p>
                                         </div>
                                     </article>
@@ -305,46 +369,69 @@
                     </div>
 
                     <!-- Right Sidebar -->
-                    <div class="w-80 flex-shrink-0">
+                    <aside class="hidden xl:block w-80 flex-shrink-0">
                         <div class="sticky top-24 space-y-8">
+                            <!-- Newsletter -->
                             <div class="bg-gray-50 rounded-xl p-6">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Newsletter</h3>
-                                <p class="text-gray-600 text-sm mb-4">Get weekly updates on customer service tips and news.</p>
-                                <form class="space-y-4">
-                                    <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-lg bg-white border-none text-sm">
-                                    <button type="submit" class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">Subscribe</button>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Weekly Support Insights</h3>
+                                <p class="text-gray-600 text-sm mb-4">Get expert tips on scaling customer support delivered to your inbox.</p>
+                                <form class="space-y-4" id="newsletterForm">
+                                    <input type="email" 
+                                           placeholder="Your email address" 
+                                           class="w-full px-4 py-2 rounded-lg bg-white border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                           required>
+                                    <button type="submit" 
+                                            class="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                                        Subscribe
+                                    </button>
                                 </form>
                             </div>
 
+                            <!-- Table of Contents -->
+                            <nav class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Contents</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li><a href="#understanding-the-challenges" class="text-gray-600 hover:text-indigo-600 transition-colors">Understanding the Challenges</a></li>
+                                    <li><a href="#building-a-scalable-foundation" class="text-gray-600 hover:text-indigo-600 transition-colors">Building a Scalable Foundation</a></li>
+                                    <li><a href="#leveraging-technology" class="text-gray-600 hover:text-indigo-600 transition-colors">Leveraging Technology</a></li>
+                                    <li><a href="#building-self-service" class="text-gray-600 hover:text-indigo-600 transition-colors">Self-Service Options</a></li>
+                                    <li><a href="#team-structure" class="text-gray-600 hover:text-indigo-600 transition-colors">Team Structure</a></li>
+                                    <li><a href="#quality-assurance" class="text-gray-600 hover:text-indigo-600 transition-colors">Quality Assurance</a></li>
+                                    <li><a href="#cost-management" class="text-gray-600 hover:text-indigo-600 transition-colors">Cost Management</a></li>
+                                    <li><a href="#measuring-success" class="text-gray-600 hover:text-indigo-600 transition-colors">Measuring Success</a></li>
+                                </ul>
+                            </nav>
+
+                            <!-- Popular Tags -->
                             <div class="bg-gray-50 rounded-xl p-6">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Popular Tags</h3>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Popular Topics</h3>
                                 <div class="flex flex-wrap gap-2">
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Customer Service</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Chat Widget</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Support</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Business</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Technology</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Customer Service</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Scaling</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Team Management</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Support Operations</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </aside>
                 </div>
             </div>
         </article>
     </main>
 
     <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-2">
-                    <a href="/" class="text-2xl font-['Pacifico'] text-white mb-4 block">ChatWidget</a>
-                    <p class="text-gray-400">Empowering businesses with better customer communication through innovative chat solutions.</p>
+                    <a href="/" class="text-2xl font-bold text-white hover:text-gray-200 transition-colors">ChatWidget</a>
+                    <p class="mt-4 text-gray-400">Transform your customer support with our free, easy-to-install chat widget. Connect with your customers in real-time.</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                         <li><a href="/pages/blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="/pages/form.html" class="text-gray-400 hover:text-white transition-colors">Try Now</a></li>
                     </ul>
                 </div>
             </div>
@@ -355,58 +442,95 @@
     </footer>
 
     <script>
-        // Wait for DOM to be fully loaded before attaching event listeners
-        document.addEventListener('DOMContentLoaded', () => {
-            const newsletterForm = document.getElementById('newsletterForm');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const toast = document.createElement('div');
-                    toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-                    toast.textContent = 'Thank you for subscribing!';
-                    document.body.appendChild(toast);
-                    setTimeout(() => toast.remove(), 3000);
-                    e.target.reset();
-                });
-            }
+        // Reading progress
+        window.addEventListener('scroll', () => {
+            const docElement = document.documentElement;
+            const winScroll = docElement.scrollTop;
+            const height = docElement.scrollHeight - docElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.reading-progress').style.setProperty('--scroll', `${scrolled}%`);
+        });
 
-            // Social share buttons
-            document.querySelectorAll('.social-share').forEach(button => {
-                button.addEventListener('click', () => {
-                    const url = encodeURIComponent(window.location.href);
-                    const title = encodeURIComponent(document.title);
-                    let shareUrl;
+        // Newsletter form
+        document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = 'Thank you for subscribing!';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+            e.target.reset();
+        });
 
-                    switch(button.dataset.platform) {
-                        case 'twitter':
-                            shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
-                            break;
-                        case 'facebook':
-                            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-                            break;
-                        case 'linkedin':
-                            shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
-                            break;
-                    }
+        // Social share buttons
+        document.querySelectorAll('[aria-label^="Share on"]').forEach(button => {
+            button.addEventListener('click', () => {
+                const platform = button.getAttribute('aria-label').split(' ')[2].toLowerCase();
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.title);
+                let shareUrl;
 
-                    if (shareUrl) {
-                        window.open(shareUrl, '_blank', 'width=600,height=400');
-                    }
+                switch(platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                        break;
+                    case 'linkedin':
+                        shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+                        break;
+                }
+
+                if (shareUrl) {
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                }
+            });
+        });
+
+        // Copy link button
+        document.querySelector('[aria-label="Copy link"]').addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href);
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = 'Link copied to clipboard!';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             });
+        });
 
-            // Copy link button
-            const copyLinkButton = document.querySelector('[aria-label="Copy link"]');
-            if (copyLinkButton) {
-                copyLinkButton.addEventListener('click', () => {
-                    navigator.clipboard.writeText(window.location.href);
-                    const toast = document.createElement('div');
-                    toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-                    toast.textContent = 'Link copied to clipboard!';
-                    document.body.appendChild(toast);
-                    setTimeout(() => toast.remove(), 3000);
-                });
-            }
+        // Highlight current section in table of contents
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.table-of-contents a').forEach(link => {
+                        link.classList.remove('text-indigo-600');
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('text-indigo-600');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('h2[id]').forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
