@@ -7,15 +7,13 @@
     <meta name="keywords" content="customer service blog, chat widget tips, customer support strategies, business communication">
     <meta name="author" content="ChatWidget">
     <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Facebook -->
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="/blog">
     <meta property="og:title" content="ChatWidget Blog - Customer Service Insights & Support Strategies">
     <meta property="og:description" content="Explore the latest insights on customer service, chat widgets, and support strategies.">
     <meta property="og:image" content="/og-image.jpg">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="/blog">
     <meta name="twitter:title" content="ChatWidget Blog - Customer Service Insights & Support Strategies">
@@ -24,7 +22,7 @@
 
     <title>ChatWidget Blog - Customer Service Insights & Support Strategies</title>
     <link rel="canonical" href="/blog">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,15 +65,14 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header -->
     <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                 
+
                     <a href="/" class="font-['Pacifico'] text-2xl text-primary-500">ChatWidget</a>
                 </div>
-               
+
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="/" class="text-gray-700 hover:text-primary-500 transition-colors">Home</a>
                     <a href="#" class="text-primary-500 font-medium">Blog</a>
@@ -86,7 +83,6 @@
     </header>
 
     <main class="pt-24">
-        <!-- Hero Section -->
         <section class="relative bg-gradient-to-r from-primary-500/90 to-primary-600 py-20 text-white overflow-hidden">
             <div class="pattern-overlay"></div>
             <div class="container mx-auto px-4 relative">
@@ -97,10 +93,8 @@
             </div>
         </section>
 
-        <!-- Blog Content -->
         <section class="py-16">
             <div class="container mx-auto px-4">
-                <!-- Search and Filters -->
                 <div class="max-w-4xl mx-auto">
                     <div class="blog-search">
                         <i class="ri-search-line"></i>
@@ -115,27 +109,24 @@
                     </div>
                 </div>
 
-                <!-- Blog Grid -->
                 <div class="max-w-7xl mx-auto">
                     <div class="blog-grid" id="blogGrid">
-                        <!-- Articles will be dynamically inserted here -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </section>
 
-        <!-- Newsletter Section -->
         <section class="py-16">
             <div class="container mx-auto px-4">
                 <div class="max-w-2xl mx-auto text-center">
                     <h2 class="text-3xl font-bold mb-6 blog-title">Stay Updated</h2>
                     <p class="text-gray-600 mb-8">Subscribe to our newsletter for the latest insights on customer service and support strategies.</p>
                     <form class="flex gap-4 max-w-md mx-auto" id="newsletterForm">
-                        <input type="email" 
-                               placeholder="Enter your email" 
+                        <input type="email"
+                               placeholder="Enter your email"
                                class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                                required>
-                        <button type="submit" 
+                        <button type="submit"
                                 class="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
                             Subscribe
                         </button>
@@ -145,7 +136,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
         <div class="pattern-overlay opacity-10"></div>
         <div class="container mx-auto px-4 relative">
@@ -179,7 +169,7 @@
                 const xml = parser.parseFromString(text, 'text/xml');
                 return Array.from(xml.querySelectorAll('item')).map(item => ({
                     title: item.querySelector('title').textContent,
-                    link: item.querySelector('link').textContent.replace(/^\/blog/, ''),
+                    link: item.querySelector('link').textContent,
                     description: item.querySelector('description').textContent,
                     author: item.querySelector('author').textContent,
                     category: item.querySelector('category').textContent,
@@ -196,7 +186,7 @@
         // Create blog card HTML
         function createBlogCard(article) {
             return `
-                <a href="articles${article.link}" class="blog-card">
+                <a href="/pages/${article.link}" class="blog-card">
                     <img src="${article.image}" alt="${article.title}" class="blog-card-image" loading="lazy">
                     <div class="blog-card-content">
                         <span class="blog-card-category">${article.category}</span>
@@ -204,8 +194,8 @@
                         <p class="blog-card-description">${article.description}</p>
                         <div class="blog-card-meta">
                             <div class="blog-card-author">
-                                <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(article.author)}" 
-                                     alt="${article.author}" 
+                                <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(article.author)}"
+                                     alt="${article.author}"
                                      class="blog-card-author-image"
                                      loading="lazy">
                                 <span>${article.author}</span>
@@ -222,7 +212,7 @@
             return articles.filter(article => {
                 const matchesCategory = category === 'all' || article.category === category;
                 const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                    article.description.toLowerCase().includes(searchTerm.toLowerCase());
+                                      article.description.toLowerCase().includes(searchTerm.toLowerCase());
                 return matchesCategory && matchesSearch;
             });
         }
