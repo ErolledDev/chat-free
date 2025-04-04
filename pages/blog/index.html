@@ -10,20 +10,20 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://chatwidget.com/blog">
+    <meta property="og:url" content="/blog">
     <meta property="og:title" content="ChatWidget Blog - Customer Service Insights & Support Strategies">
     <meta property="og:description" content="Explore the latest insights on customer service, chat widgets, and support strategies.">
-    <meta property="og:image" content="https://chatwidget.com/og-image.jpg">
+    <meta property="og:image" content="/og-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://chatwidget.com/blog">
+    <meta name="twitter:url" content="/blog">
     <meta name="twitter:title" content="ChatWidget Blog - Customer Service Insights & Support Strategies">
     <meta name="twitter:description" content="Explore the latest insights on customer service, chat widgets, and support strategies.">
-    <meta name="twitter:image" content="https://chatwidget.com/og-image.jpg">
+    <meta name="twitter:image" content="/og-image.jpg">
 
     <title>ChatWidget Blog - Customer Service Insights & Support Strategies</title>
-    <link rel="canonical" href="https://chatwidget.com/blog">
+    <link rel="canonical" href="/blog">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -179,7 +179,7 @@
                 const xml = parser.parseFromString(text, 'text/xml');
                 return Array.from(xml.querySelectorAll('item')).map(item => ({
                     title: item.querySelector('title').textContent,
-                    link: item.querySelector('link').textContent,
+                    link: item.querySelector('link').textContent.replace(/^\/blog/, ''),
                     description: item.querySelector('description').textContent,
                     author: item.querySelector('author').textContent,
                     category: item.querySelector('category').textContent,
@@ -196,7 +196,7 @@
         // Create blog card HTML
         function createBlogCard(article) {
             return `
-                <a href="${article.link}" class="blog-card">
+                <a href="articles${article.link}" class="blog-card">
                     <img src="${article.image}" alt="${article.title}" class="blog-card-image" loading="lazy">
                     <div class="blog-card-content">
                         <span class="blog-card-category">${article.category}</span>

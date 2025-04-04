@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ChatWidget Blog</title>
-    <link>https://chatwidget.com/blog</link>
+    <link>/blog</link>
     <description>Latest insights on customer service, chat widgets, and support strategies</description>
     <language>en-us</language>
     <lastBuildDate>Fri, 24 Mar 2025 12:00:00 GMT</lastBuildDate>
-    <atom:link href="https://chatwidget.com/blog/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/blog/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>10 Tips for Better Customer Support</title>
-      <link>https://chatwidget.com/blog/articles/10-tips-for-better-customer-support.html</link>
+      <link>/blog/articles/10-tips-for-better-customer-support.html</link>
       <pubDate>Fri, 24 Mar 2025 10:00:00 GMT</pubDate>
       <guid>/blog/articles/10-tips-for-better-customer-support.html</guid>
       <description>Essential strategies to improve your customer support and satisfaction levels.</description>
@@ -22,9 +22,9 @@
 
     <item>
       <title>Chat Widget Implementation Guide</title>
-      <link>https://chatwidget.com/blog/articles/chat-widget-implementation-guide.html</link>
+      <link>/blog/articles/chat-widget-implementation-guide.html</link>
       <pubDate>Wed, 21 Mar 2025 14:00:00 GMT</pubDate>
-      <guid>https://chatwidget.com/blog/articles/chat-widget-implementation-guide.html</guid>
+      <guid>/blog/articles/chat-widget-implementation-guide.html</guid>
       <description>Step-by-step guide to implementing a chat widget on your website.</description>
       <author>Alex Thompson</author>
       <category>Technical</category>
@@ -34,9 +34,9 @@
 
     <item>
       <title>The Future of Customer Service in 2025</title>
-      <link>https://chatwidget.com/blog/articles/future-of-customer-service-2025.html</link>
+      <link>/blog/articles/future-of-customer-service-2025.html</link>
       <pubDate>Thu, 23 Mar 2025 09:00:00 GMT</pubDate>
-      <guid>https://chatwidget.com/blog/articles/future-of-customer-service-2025.html</guid>
+      <guid>/blog/articles/future-of-customer-service-2025.html</guid>
       <description>Exploring upcoming trends and innovations in customer service technology.</description>
       <author>Michael Chen</author>
       <category>Technology</category>
@@ -46,9 +46,9 @@
 
     <item>
       <title>Scaling Customer Support: A Comprehensive Guide</title>
-      <link>https://chatwidget.com/blog/articles/scaling-customer-support.html</link>
+      <link>/blog/articles/scaling-customer-support.html</link>
       <pubDate>Wed, 22 Mar 2025 15:30:00 GMT</pubDate>
-      <guid>https://chatwidget.com/blog/articles/scaling-customer-support.html</guid>
+      <guid>/blog/articles/scaling-customer-support.html</guid>
       <description>Learn how to effectively scale your support operations while maintaining quality.</description>
       <author>David Wilson</author>
       <category>Business</category>
@@ -58,9 +58,9 @@
 
     <item>
       <title>Why Chat Widget is Essential for Modern Businesses</title>
-      <link>https://chatwidget.com/blog/articles/why-chat-widget-is-essential.html</link>
+      <link>/blog/articles/why-chat-widget-is-essential.html</link>
       <pubDate>Sun, 25 Mar 2025 08:00:00 GMT</pubDate>
-      <guid>https://chatwidget.com/blog/articles/why-chat-widget-is-essential.html</guid>
+      <guid>/blog/articles/why-chat-widget-is-essential.html</guid>
       <description>Discover why implementing a chat widget is crucial for modern business success.</description>
       <author>John Smith</author>
       <category>Business</category>
@@ -70,9 +70,9 @@
 
     <item>
       <title>Why Chat Widget is a Must-Have in Your Website</title>
-      <link>https://chatwidget.com/blog/articles/why-chat-widget-is-a-must-have-in-your-website.html</link>
+      <link>/blog/articles/why-chat-widget-is-a-must-have-in-your-website.html</link>
       <pubDate>Mon, 15 Jan 2025 10:00:00 GMT</pubDate>
-      <guid>https://chatwidget.com/blog/articles/why-chat-widget-is-a-must-have-in-your-website.html</guid>
+      <guid>/blog/articles/why-chat-widget-is-a-must-have-in-your-website.html</guid>
       <description>Transform your customer support with our free, easy-to-install chat widget.</description>
       <author>Emma Davis</author>
       <category>Customer Service</category>
