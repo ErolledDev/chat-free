@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Learn how to implement a chat widget on your website with our comprehensive step-by-step guide. Improve customer engagement and support with easy installation.">
+    <meta name="description" content="Master the implementation of chat widgets with our comprehensive guide. Learn step-by-step how to integrate, customize, and optimize your chat widget for better customer engagement.">
     <meta name="keywords" content="chat widget implementation, website chat setup, customer support installation, chat integration">
     <meta name="author" content="Alex Thompson">
     <meta name="robots" content="index, follow">
@@ -11,61 +11,105 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://chatwidget.com/blog/articles/chat-widget-implementation-guide">
-    <meta property="og:title" content="Chat Widget Implementation Guide - ChatWidget Blog">
+    <meta property="og:title" content="Chat Widget Implementation Guide - A Complete Tutorial">
     <meta property="og:description" content="Learn how to implement a chat widget on your website with our comprehensive step-by-step guide.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1552581234-26160f608093">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chat Widget Implementation Guide - ChatWidget Blog">
+    <meta name="twitter:title" content="Chat Widget Implementation Guide - A Complete Tutorial">
     <meta name="twitter:description" content="Learn how to implement a chat widget on your website with our comprehensive step-by-step guide.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1552581234-26160f608093">
 
-    <title>Chat Widget Implementation Guide - ChatWidget Blog</title>
+    <title>Chat Widget Implementation Guide - A Complete Tutorial</title>
     <link rel="canonical" href="https://chatwidget.com/blog/articles/chat-widget-implementation-guide">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
     <style>
-        .blog-content {
-            font-family: 'Playfair Display', serif;
-        }
+        /* Typography */
         .prose {
-            max-width: 65ch;
-            line-height: 1.75;
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #374151;
         }
-        .prose h2 {
-            font-family: 'Playfair Display', serif;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.875rem;
+        
+        .prose h1, .prose h2, .prose h3, .prose h4 {
+            font-family: 'Inter', sans-serif;
+            color: #111827;
+            margin-top: 2em;
+            margin-bottom: 1em;
             font-weight: 700;
-            color: #1f2937;
+            line-height: 1.3;
         }
+
+        .prose h1 { font-size: 2.5em; }
+        .prose h2 { font-size: 1.75em; }
+        .prose h3 { font-size: 1.5em; }
+        
         .prose p {
-            margin-bottom: 1.5rem;
-            color: #4b5563;
+            margin-bottom: 1.5em;
         }
-        .prose ul {
-            margin-top: 1.25rem;
-            margin-bottom: 1.25rem;
-            list-style-type: disc;
-            padding-left: 1.625rem;
+
+        .prose ul, .prose ol {
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+            padding-left: 1.625em;
         }
+
         .prose li {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .prose blockquote {
+            border-left: 3px solid #4f46e5;
+            padding-left: 1em;
+            margin: 1.5em 0;
+            font-style: italic;
             color: #4b5563;
         }
+
+        .prose img {
+            border-radius: 0.5rem;
+            margin: 2em 0;
+        }
+
+        .prose code {
+            background: #f3f4f6;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25em;
+            font-size: 0.875em;
+        }
+
+        /* Article specific */
+        .article-header {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .reading-progress {
+            background: linear-gradient(to right, #4f46e5 var(--scroll), transparent 0);
+            position: fixed;
+            width: 100%;
+            height: 3px;
+            top: 64px;
+            z-index: 100;
+        }
+
+        /* Highlight text selection */
+        ::selection {
+            background: rgba(79, 70, 229, 0.2);
+        }
+
         .code-block {
             background: #1f2937;
             color: #e5e7eb;
             padding: 1.5rem;
             border-radius: 0.5rem;
-            
             overflow-x: auto;
             font-family: monospace;
             font-size: 0.875rem;
@@ -74,127 +118,149 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div class="container mx-auto px-4">
+<body class="bg-gray-50">
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center gap-8">
-                    <a href="/pages/blog/index.html" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
+                    <a href="/pages/blog/index.html" class="flex items-center gap-2 text-gray-600 hover:text-indigo-600 transition-colors">
                         <i class="ri-arrow-left-line"></i>
                         <span>Back to Blog</span>
                     </a>
-                    <a href="/" class="font-['Pacifico'] text-2xl text-primary">ChatWidget</a>
+                    <a href="/" class="text-2xl font-bold text-indigo-600">ChatWidget</a>
                 </div>
-               
-                <nav class="hidden md:flex space-x-8" style="display: flex; align-items: center; justify-content: space-between;">
-                    <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="#" class="text-primary font-medium">Blog</a>
-                    <a href="/pages/form.html" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 transition-colors">Try Now</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="/pages/blog/index.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Blog</a>
+                    <a href="/pages/form.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Try Now</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main class="pt-24">
+    <main class="pt-16">
         <article>
-            <!-- Hero Section -->
-            <div class="relative h-[400px] overflow-hidden">
+            <!-- Article Header -->
+            <header class="relative h-[600px] overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&q=80&w=2070" 
                      alt="Chat Widget Implementation" 
                      class="w-full h-full object-cover"
                      width="2070"
                      height="1380">
-                <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
                 <div class="absolute inset-0 flex items-center">
-                    <div class="container mx-auto px-4">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="max-w-3xl">
-                            <span class="inline-block px-3 py-1 bg-primary/20 text-white rounded-full text-sm font-medium mb-4">
-                                Guides
-                            </span>
-                            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 blog-content">
-                                Chat Widget Implementation Guide
-                            </h1>
-                            <div class="flex items-center gap-6 text-white">
-                                <div class="flex items-center gap-3">
-                                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=100" 
-                                         alt="Alex Thompson" 
-                                         class="w-12 h-12 rounded-full object-cover"
-                                         width="48"
-                                         height="48"
-                                         loading="lazy">
-                                    <div>
-                                        <h4 class="font-medium">Alex Thompson</h4>
-                                        <p class="text-sm opacity-80">Technical Writer</p>
+                            <div class="space-y-4">
+                                <span class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-indigo-100 text-indigo-800">
+                                    Technical Guide
+                                </span>
+                                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white article-header">
+                                    Chat Widget Implementation: A Complete Guide
+                                </h1>
+                                <div class="flex items-center gap-6 text-white/90">
+                                    <div class="flex items-center gap-3">
+                                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=100" 
+                                             alt="Alex Thompson" 
+                                             class="w-12 h-12 rounded-full object-cover"
+                                             width="48"
+                                             height="48">
+                                        <div>
+                                            <h3 class="font-medium">Alex Thompson</h3>
+                                            <p class="text-sm opacity-90">Technical Writer</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="flex items-center gap-4 text-sm">
-                                    <span class="flex items-center gap-2">
-                                        <i class="ri-time-line"></i>
-                                        <span>4 min read</span>
-                                    </span>
-                                    <span class="flex items-center gap-2">
-                                        <i class="ri-calendar-line"></i>
-                                        <span>March 21, 2025</span>
-                                    </span>
+                                    <div class="flex items-center gap-4 text-sm">
+                                        <span class="flex items-center gap-2">
+                                            <i class="ri-time-line"></i>
+                                            <span>8 min read</span>
+                                        </span>
+                                        <span class="flex items-center gap-2">
+                                            <i class="ri-calendar-line"></i>
+                                            <span>Updated Mar 21, 2025</span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
 
             <!-- Article Content -->
-            <div class="container mx-auto px-4 py-12">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="flex gap-12">
                     <!-- Social Share Sidebar -->
-                    <div class="w-16 flex-shrink-0">
+                    <aside class="hidden lg:block w-16 flex-shrink-0">
                         <div class="sticky top-24 space-y-4">
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on Twitter">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Share on Twitter">
                                 <i class="ri-twitter-fill"></i>
                             </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on Facebook">
-                                <i class="ri-facebook-fill"></i>
-                            </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Share on LinkedIn">
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Share on LinkedIn">
                                 <i class="ri-linkedin-fill"></i>
                             </button>
-                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors" aria-label="Copy link">
-                                <i class="ri-link-m"></i>
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Share on Facebook">
+                                <i class="ri-facebook-fill"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors" aria-label="Copy link">
+                                <i class="ri-link"></i>
                             </button>
                         </div>
-                    </div>
+                    </aside>
 
                     <!-- Main Content -->
                     <div class="flex-1 max-w-3xl">
                         <div class="prose">
+                            <!-- Introduction -->
                             <p class="text-xl leading-relaxed">
-                                Adding a chat widget to your website is a powerful way to enhance customer support and engagement. This guide will walk you through the implementation process step by step.
+                                Implementing a chat widget on your website can significantly improve customer engagement and support. This comprehensive guide will walk you through the entire process, from initial setup to advanced customization.
                             </p>
 
-                            <h2>Prerequisites</h2>
+                            <blockquote>
+                                "Companies that implement live chat see an average 20% increase in conversion rates." 
+                                <cite>— Customer Support Trends Report 2025</cite>
+                            </blockquote>
+
+                            <!-- Table of Contents -->
+                            <div class="my-8 p-6 bg-gray-50 rounded-xl">
+                                <h2 class="text-xl font-semibold text-gray-900 mt-0">What You'll Learn</h2>
+                                <ul class="mt-4">
+                                    <li><a href="#prerequisites" class="text-indigo-600 hover:underline">1. Prerequisites</a></li>
+                                    <li><a href="#installation" class="text-indigo-600 hover:underline">2. Basic Installation</a></li>
+                                    <li><a href="#configuration" class="text-indigo-600 hover:underline">3. Configuration Options</a></li>
+                                    <li><a href="#customization" class="text-indigo-600 hover:underline">4. Customization</a></li>
+                                    <li><a href="#testing" class="text-indigo-600 hover:underline">5. Testing & Validation</a></li>
+                                    <li><a href="#optimization" class="text-indigo-600 hover:underline">6. Performance Optimization</a></li>
+                                </ul>
+                            </div>
+
+                            <h2 id="prerequisites">1. Prerequisites</h2>
                             <p>
-                                Before you begin, make sure you have:
+                                Before implementing the chat widget, ensure you have:
                             </p>
                             <ul>
                                 <li>Access to your website's HTML</li>
                                 <li>Basic understanding of web development</li>
-                                <li>A ChatWidget account (you can create one for free)</li>
+                                <li>A ChatWidget account (free to create)</li>
+                                <li>Website with HTTPS enabled (recommended)</li>
                             </ul>
 
-                            <h2>Step 1: Configure Your Widget</h2>
-                            <p>
-                                Start by customizing your chat widget in the ChatWidget dashboard:
-                            </p>
-                            <ul>
-                                <li>Choose your color scheme</li>
-                                <li>Set up welcome messages</li>
-                                <li>Configure automated responses</li>
-                                <li>Add your business details</li>
-                            </ul>
+                            <div class="bg-indigo-50 p-6 rounded-xl my-8">
+                                <h3 class="text-lg font-semibold text-indigo-900 mt-0">Pro Tip</h3>
+                                <p class="mb-0">
+                                    Always test the chat widget in a development environment before deploying to production. This ensures a smooth implementation without affecting your live website.
+                                </p>
+                            </div>
 
-                            <h2>Step 2: Get Your Installation Code</h2>
+                            <h2 id="installation">2. Basic Installation</h2>
                             <p>
-                                After configuration, you'll receive a unique installation code that looks like this:
+                                Installing ChatWidget is straightforward. Add the following code just before the closing <code>&lt;/body&gt;</code> tag of your HTML:
                             </p>
+
                             <div class="code-block">
                                 <pre><code>&lt;!-- ChatWidget Installation Code --&gt;
 &lt;script src="https://chatwidget.com/widget.js"&gt;&lt;/script&gt;
@@ -207,62 +273,60 @@
 &lt;/script&gt;</code></pre>
                             </div>
 
-                            <h2>Step 3: Add the Code to Your Website</h2>
+                            <h2 id="configuration">3. Configuration Options</h2>
                             <p>
-                                Place the installation code just before the closing &lt;/body&gt; tag in your HTML:
-                            </p>
-                            <div class="code-block">
-                                <pre><code>&lt;html&gt;
-    &lt;head&gt;
-        ...
-    &lt;/head&gt;
-    &lt;body&gt;
-        ... your website content ...
-        
-        &lt;!-- ChatWidget Code Here --&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                            </div>
-
-                            <h2>Step 4: Test Your Implementation</h2>
-                            <p>
-                                After adding the code:
+                                ChatWidget offers numerous configuration options to customize its behavior:
                             </p>
                             <ul>
-                                <li>Visit your website in different browsers</li>
-                                <li>Test the chat functionality</li>
-                                <li>Verify all customizations appear correctly</li>
-                                <li>Check mobile responsiveness</li>
+                                <li>Business name and branding</li>
+                                <li>Color scheme and theme</li>
+                                <li>Welcome messages</li>
+                                <li>Auto-response settings</li>
+                                <li>Widget positioning</li>
+                                <li>Operating hours</li>
                             </ul>
 
-                            <h2>Step 5: Configure Notifications</h2>
+                            <h2 id="customization">4. Customization</h2>
                             <p>
-                                Set up how you'll receive chat notifications:
+                                Customize the appearance and behavior of your chat widget:
                             </p>
                             <ul>
-                                <li>Email notifications</li>
-                                <li>Desktop notifications</li>
-                                <li>Mobile app alerts</li>
-                                <li>Team member assignments</li>
+                                <li>Brand colors and typography</li>
+                                <li>Custom icons and images</li>
+                                <li>Response templates</li>
+                                <li>Widget position and size</li>
+                                <li>Mobile responsiveness</li>
                             </ul>
 
-                            <h2>Best Practices</h2>
+                            <h2 id="testing">5. Testing & Validation</h2>
                             <p>
-                                Follow these tips for optimal implementation:
+                                Before going live, thoroughly test your chat widget:
                             </p>
                             <ul>
-                                <li>Place the widget where it's visible but not intrusive</li>
-                                <li>Test loading speed impact</li>
-                                <li>Ensure GDPR compliance</li>
-                                <li>Set up automated responses for off-hours</li>
+                                <li>Cross-browser compatibility</li>
+                                <li>Mobile responsiveness</li>
+                                <li>Load time impact</li>
+                                <li>Message delivery</li>
+                                <li>Automated responses</li>
                             </ul>
 
-                            <div class="bg-primary/5 p-8 rounded-xl mt-12">
+                            <h2 id="optimization">6. Performance Optimization</h2>
+                            <p>
+                                Optimize your chat widget for better performance:
+                            </p>
+                            <ul>
+                                <li>Lazy loading implementation</li>
+                                <li>Resource compression</li>
+                                <li>Caching strategies</li>
+                                <li>Network optimization</li>
+                            </ul>
+
+                            <div class="bg-indigo-50 p-8 rounded-xl mt-12">
                                 <h3 class="text-xl font-bold text-gray-900 mb-4">Ready to Implement ChatWidget?</h3>
                                 <p class="mb-6">
-                                    Get started with ChatWidget today and enhance your customer support experience. Our setup wizard will guide you through the process.
+                                    Start enhancing your customer support experience today with our easy-to-implement chat solution.
                                 </p>
-                                <a href="/pages/form.html" class="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+                                <a href="/pages/form.html" class="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                                     Try ChatWidget Free
                                     <i class="ri-arrow-right-line ml-2"></i>
                                 </a>
@@ -276,8 +340,7 @@
                                      alt="Alex Thompson" 
                                      class="w-16 h-16 rounded-full object-cover"
                                      width="64"
-                                     height="64"
-                                     loading="lazy">
+                                     height="64">
                                 <div>
                                     <h4 class="text-lg font-semibold">Alex Thompson</h4>
                                     <p class="text-gray-600">Technical Writer specializing in web technologies and customer support solutions. Previously worked as a frontend developer for leading tech companies.</p>
@@ -288,7 +351,7 @@
                         <!-- Related Articles -->
                         <div class="mt-12 pt-12 border-t border-gray-200">
                             <h3 class="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
-                            <div class="grid grid-cols-2 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <a href="/pages/blog/articles/10-tips-for-better-customer-support.html" class="group">
                                     <article class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                                         <img src="https://images.unsplash.com/photo-1565847996490-4ba33e46c2ce?auto=format&fit=crop&q=80&w=800" 
@@ -298,7 +361,7 @@
                                              height="400"
                                              loading="lazy">
                                         <div class="p-6">
-                                            <h4 class="text-lg font-semibold group-hover:text-primary transition-colors">10 Tips for Better Customer Support</h4>
+                                            <h4 class="text-lg font-semibold group-hover:text-indigo-600 transition-colors">10 Tips for Better Customer Support</h4>
                                             <p class="text-gray-600 mt-2">Essential strategies to improve your customer support and satisfaction levels.</p>
                                         </div>
                                     </article>
@@ -312,7 +375,7 @@
                                              height="400"
                                              loading="lazy">
                                         <div class="p-6">
-                                            <h4 class="text-lg font-semibold group-hover:text-primary transition-colors">The Future of Customer Service</h4>
+                                            <h4 class="text-lg font-semibold group-hover:text-indigo-600 transition-colors">The Future of Customer Service</h4>
                                             <p class="text-gray-600 mt-2">Exploring upcoming trends and innovations in customer service technology.</p>
                                         </div>
                                     </article>
@@ -322,54 +385,67 @@
                     </div>
 
                     <!-- Right Sidebar -->
-                    <div class="w-80 flex-shrink-0">
+                    <aside class="hidden xl:block w-80 flex-shrink-0">
                         <div class="sticky top-24 space-y-8">
                             <!-- Newsletter -->
                             <div class="bg-gray-50 rounded-xl p-6">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Newsletter</h3>
-                                <p class="text-gray-600 text-sm mb-4">Get weekly updates on customer service technology and implementation guides.</p>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Weekly Tech Updates</h3>
+                                <p class="text-gray-600 text-sm mb-4">Get the latest implementation tips and tech news delivered to your inbox.</p>
                                 <form class="space-y-4" id="newsletterForm">
                                     <input type="email" 
-                                           placeholder="Your email" 
-                                           class="w-full px-4 py-2 rounded-lg bg-white border-none text-sm"
-                                           required
-                                           aria-label="Email for newsletter">
+                                           placeholder="Your email address" 
+                                           class="w-full px-4 py-2 rounded-lg bg-white border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                           required>
                                     <button type="submit" 
-                                            class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                                            class="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
                                         Subscribe
                                     </button>
                                 </form>
                             </div>
 
+                            <!-- Table of Contents -->
+                            <nav class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Contents</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li><a href="#prerequisites" class="text-gray-600 hover:text-indigo-600 transition-colors">1. Prerequisites</a></li>
+                                    <li><a href="#installation" class="text-gray-600 hover:text-indigo-600 transition-colors">2. Basic Installation</a></li>
+                                    <li><a href="#configuration" class="text-gray-600 hover:text-indigo-600 transition-colors">3. Configuration Options</a></li>
+                                    <li><a href="#customization" class="text-gray-600 hover:text-indigo-600 transition-colors">4. Customization</a></li>
+                                    <li><a href="#testing" class="text-gray-600 hover:text-indigo-600 transition-colors">5. Testing & Validation</a></li>
+                                    <li><a href="#optimization" class="text-gray-600 hover:text-indigo-600 transition-colors">6. Performance Optimization</a></li>
+                                </ul>
+                            </nav>
+
                             <!-- Popular Tags -->
                             <div class="bg-gray-50 rounded-xl p-6">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Popular Tags</h3>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Popular Topics</h3>
                                 <div class="flex flex-wrap gap-2">
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Implementation</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Guide</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Technical</a>
-                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-primary hover:text-white transition-colors">Setup</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Implementation</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Technical</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Integration</a>
+                                    <a href="#" class="px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-600 hover:text-white transition-colors">Web Development</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </aside>
                 </div>
             </div>
         </article>
     </main>
 
     <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="col-span-2">
-                    <a href="/" class="text-2xl font-['Pacifico'] text-white mb-4 block">ChatWidget</a>
-                    <p class="text-gray-400">Empowering businesses with better customer communication through innovative chat solutions.</p>
+                    <a href="/" class="text-2xl font-bold text-white hover:text-gray-200 transition-colors">ChatWidget</a>
+                    <p class="mt-4 text-gray-400">Transform your customer support with our free, easy-to-install chat widget. Connect with your customers in real-time.</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                         <li><a href="/pages/blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="/pages/form.html" class="text-gray-400 hover:text-white transition-colors">Try Now</a></li>
                     </ul>
                 </div>
             </div>
@@ -380,7 +456,16 @@
     </footer>
 
     <script>
-        // Newsletter form submission
+        // Reading progress
+        window.addEventListener('scroll', () => {
+            const docElement = document.documentElement;
+            const winScroll = docElement.scrollTop;
+            const height = docElement.scrollHeight - docElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.reading-progress').style.setProperty('--scroll', `${scrolled}%`);
+        });
+
+        // Newsletter form
         document.getElementById('newsletterForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const toast = document.createElement('div');
@@ -392,13 +477,14 @@
         });
 
         // Social share buttons
-        document.querySelectorAll('.social-share').forEach(button => {
+        document.querySelectorAll('[aria-label^="Share on"]').forEach(button => {
             button.addEventListener('click', () => {
+                const platform = button.getAttribute('aria-label').split(' ')[2].toLowerCase();
                 const url = encodeURIComponent(window.location.href);
                 const title = encodeURIComponent(document.title);
                 let shareUrl;
 
-                switch(button.dataset.platform) {
+                switch(platform) {
                     case 'twitter':
                         shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
                         break;
@@ -424,6 +510,41 @@
             toast.textContent = 'Link copied to clipboard!';
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Highlight current section in table of contents
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.table-of-contents a').forEach(link => {
+                        link.classList.remove('text-indigo-600');
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('text-indigo-600');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('h2[id]').forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
