@@ -26,6 +26,7 @@
     @keyframes slideIn {
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
+    
     }
     
     @keyframes fadeIn {
@@ -354,19 +355,12 @@
     closingMessage.className = 'closing-message';
     
     let buttonsHtml = '';
-    if (config.messageClosingActionUrl && config.messageClosingActionButton) {
-      buttonsHtml += `
-        <a href="${config.messageClosingActionUrl}" target="_blank" class="closing-action-button">
-          ${config.messageClosingActionButton}
+    if (config.actionButtons && config.actionButtons.length > 0) {
+      buttonsHtml = config.actionButtons.map(button => `
+        <a href="${button.url}" target="_blank" class="closing-action-button">
+          ${button.title}
         </a>
-      `;
-    }
-    if (config.messageClosingActionUrl2 && config.messageClosingActionButton2) {
-      buttonsHtml += `
-        <a href="${config.messageClosingActionUrl2}" target="_blank" class="closing-action-button">
-          ${config.messageClosingActionButton2}
-        </a>
-      `;
+      `).join('');
     }
 
     closingMessage.innerHTML = `
@@ -509,19 +503,12 @@
     let closingMessageHtml = '';
     if (hasShownClosingMessage) {
       let buttonsHtml = '';
-      if (config.messageClosingActionUrl && config.messageClosingActionButton) {
-        buttonsHtml += `
-          <a href="${config.messageClosingActionUrl}" target="_blank" class="closing-action-button">
-            ${config.messageClosingActionButton}
+      if (config.actionButtons && config.actionButtons.length > 0) {
+        buttonsHtml = config.actionButtons.map(button => `
+          <a href="${button.url}" target="_blank" class="closing-action-button">
+            ${button.title}
           </a>
-        `;
-      }
-      if (config.messageClosingActionUrl2 && config.messageClosingActionButton2) {
-        buttonsHtml += `
-          <a href="${config.messageClosingActionUrl2}" target="_blank" class="closing-action-button">
-            ${config.messageClosingActionButton2}
-          </a>
-        `;
+        `).join('');
       }
 
       closingMessageHtml = `

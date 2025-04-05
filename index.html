@@ -596,33 +596,37 @@
     <!-- Chat Widget -->
     <script src="/chat.js"></script>
     <script>
-        window.businessChatConfig = {
-            businessName: "ChatWidget Support",
-            colorScheme: "#4f46e5",
-            image: "https://images.pexels.com/photos/3789888/pexels-photo-3789888.jpeg",
-            welcomeMessage: "👋 Welcome! How can I help you today?",
-          "messageClosing": "To continue chatting please reach us via the links below",
-  "messageClosingActionButton": "Facebook",
-  "messageClosingActionUrl": "https://facebook.com/cedong1022",
-  "messageClosingActionButton2": "WhatsApp",
-  "messageClosingActionUrl2": "https://wa.me/639169888275",
-
- 
-            quickQuestions: [
-                {
-                    question: "How do I install the widget?",
-                    answer: "Installation is super easy! Just click the 'Try Now' button, customize your widget, and copy the installation code to your website."
-                },
-                {
-                    question: "Is it really free?",
-                    answer: "Yes! Our chat widget is completely free to use with no hidden costs or premium features."
-                },
-                {
-                    question: "Can I customize the appearance?",
-                    answer: "Absolutely! You can customize colors, text, and appearance to match your brand through our easy-to-use configurator."
-                }
-            ]
-        };
+      window.businessChatConfig = {
+  "businessName": "ChatWidget Support",
+  "colorScheme": "#4f46e5",
+  "image": "https://images.pexels.com/photos/3789888/pexels-photo-3789888.jpeg",
+  "welcomeMessage": "👋 Welcome! How can I help you today?",
+  "messageClosing": "To continue chatting please reach us via the links below",
+  "quickQuestions": [
+    {
+      "question": "How do I install the widget?",
+      "answer": "Installation is super easy! Just click the 'Try Now' button, customize your widget, and copy the installation code to your website."
+    },
+    {
+      "question": "Is it really free?",
+      "answer": "Yes! Our chat widget is completely free to use with no hidden costs or premium features."
+    },
+    {
+      "question": "Can I customize the appearance?",
+      "answer": "Absolutely! You can customize colors, text, and appearance to match your brand through our easy-to-use configurator."
+    }
+  ],
+  "actionButtons": [
+    {
+      "title": "Facebook",
+      "url": "https://facebook.com/cedong1022"
+    },
+    {
+      "title": "WhatsApp",
+      "url": "https://wa.me/639169888275"
+    }
+  ]
+};
 
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', () => {
