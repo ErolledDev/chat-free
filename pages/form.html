@@ -41,6 +41,21 @@
             pointer-events: none;
             position: absolute;
         }
+        #widgetPreview {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: none;
+        }
+        #widgetPreview.visible {
+            display: block;
+            animation: slideIn 0.3s ease forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -122,7 +137,8 @@
                                     <label for="businessName" class="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
                                     <input type="text" id="businessName" name="businessName" 
                                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                        placeholder="Enter your business name">
+                                        placeholder="Enter your business name"
+                                        value="My Business">
                                 </div>
 
                                 <div>
@@ -155,7 +171,7 @@
                                 <label for="welcomeMessage" class="block text-sm font-medium text-gray-700 mb-2">Welcome Message</label>
                                 <textarea id="welcomeMessage" name="welcomeMessage" rows="3"
                                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                    placeholder="Enter a welcome message for your visitors"></textarea>
+                                    placeholder="Enter a welcome message for your visitors">👋 Welcome! How can I help you today?</textarea>
                             </div>
                         </div>
 
@@ -216,7 +232,7 @@
                                 <label for="messageClosing" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
                                 <textarea id="messageClosing" name="messageClosing" rows="2"
                                     class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                                    placeholder="Enter the message to show when all questions are answered"></textarea>
+                                    placeholder="Enter the message to show when all questions are answered">To continue chatting please reach us via the links below:</textarea>
                             </div>
 
                             <div id="actionButtons" class="space-y-6">
@@ -267,42 +283,10 @@
                 </form>
             </div>
         </div>
-          <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
-        <div class="pattern-overlay opacity-10"></div>
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="col-span-2">
-                    <a href="/" class="text-2xl font-bold text-white hover:text-gray-200 transition-colors">ChatWidget</a>
-                    <p class="mt-4 text-gray-400 max-w-md">Transform your customer support with our free, easy-to-install chat widget. Connect with your customers in real-time.</p>
-                </div>
-                <nav aria-label="Footer navigation">
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
-                        <li><a href="#why-us" class="text-gray-400 hover:text-white transition-colors">Why Choose Us</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
-                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href="/pages/guide.html" class="text-gray-400 hover:text-white transition-colors">User Guide</a></li>
-                        <li><a href="/pages/terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-                        <li><a href="/pages/privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="/pages/blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                    </ul>
-                </nav>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Get Started</h3>
-                    <a href="/pages/form.html" class="inline-block bg-white text-primary-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
-                        Try Now
-                    </a>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2023 ChatWidget. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
     </main>
+
+    <!-- Widget Preview -->
+    <div id="widgetPreview"></div>
 
     <script>
         let imageBase64 = '';
@@ -310,7 +294,19 @@
         let actionCount = 0;
         let currentStep = 1;
 
-        function createQuestionElement(index) {
+        // Default question template
+        const defaultQuestion = {
+            question: "How can I help you?",
+            answer: "I'm here to assist you with any questions you have about our products or services."
+        };
+
+        // Default action button template
+        const defaultAction = {
+            title: "Contact Us",
+            url: "mailto:contact@example.com"
+        };
+
+        function createQuestionElement(index, defaultValues = defaultQuestion) {
             const div = document.createElement('div');
             div.className = 'bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:border-indigo-500 transition-all relative';
             div.innerHTML = `
@@ -322,20 +318,21 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Question ${index + 1}</label>
                         <input type="text" name="question${index + 1}" 
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="Enter your question">
+                            placeholder="Enter your question"
+                            value="${defaultValues.question}">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Answer ${index + 1}</label>
                         <textarea name="answer${index + 1}" rows="2"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="Enter the answer"></textarea>
+                            placeholder="Enter the answer">${defaultValues.answer}</textarea>
                     </div>
                 </div>
             `;
             return div;
         }
 
-        function createActionButtonElement(index) {
+        function createActionButtonElement(index, defaultValues = defaultAction) {
             const div = document.createElement('div');
             div.className = 'bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:border-indigo-500 transition-all relative';
             div.innerHTML = `
@@ -347,13 +344,15 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Button Title ${index + 1}</label>
                         <input type="text" name="actionButton${index + 1}" 
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="e.g., 'Contact on Facebook'">
+                            placeholder="e.g., 'Contact on Facebook'"
+                            value="${defaultValues.title}">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Action URL ${index + 1}</label>
                         <input type="text" name="actionUrl${index + 1}"
                             class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                            placeholder="e.g., https://m.me/username">
+                            placeholder="e.g., https://m.me/username"
+                            value="${defaultValues.url}">
                     </div>
                 </div>
             `;
@@ -449,6 +448,28 @@
 <\/script>`;
             
             document.getElementById('installationCode').textContent = code;
+
+            // Update preview if on installation step
+            if (currentStep === 4) {
+                updateWidgetPreview(config);
+            }
+        }
+
+        function updateWidgetPreview(config) {
+            const previewContainer = document.getElementById('widgetPreview');
+            previewContainer.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999999;">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: ${config.colorScheme}; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+                        ${config.image ? 
+                            `<img src="${config.image}" alt="${config.businessName}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">` :
+                            `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>`
+                        }
+                    </div>
+                </div>
+            `;
+            previewContainer.classList.add('visible');
         }
 
         function updateProgress() {
@@ -465,6 +486,14 @@
                     btn.classList.add('bg-white/10');
                 }
             });
+
+            // Show/hide preview
+            const previewContainer = document.getElementById('widgetPreview');
+            if (currentStep === 4) {
+                updateWidgetPreview(generateConfig());
+            } else {
+                previewContainer.classList.remove('visible');
+            }
         }
 
         function showStep(step) {
@@ -542,6 +571,5 @@
         addQuestion();
         addActionButton();
     </script>
-  
 </body>
 </html>
